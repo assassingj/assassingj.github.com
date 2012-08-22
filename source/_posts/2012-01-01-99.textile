@@ -1,0 +1,23 @@
+---
+layout: post
+title: 'pythonchallenge专题－1'
+date: 2012-1-1
+wordpress_id: 99
+permalink: /blogs/99
+comments: true
+---
+<a href="http://www.pythonchallenge.com/" title="pythonchallenge" target="_blank">pythonchallenge</a>听过很多次，今天决定开始试试.
+
+打开<a href="http://www.pythonchallenge.com" title="www.pythonchallenge.com" target="_blank">www.pythonchallenge.com</a>，引导进入第一题。
+题目非常简单，求2的38次方
+直接
+[cc lang="python"]
+print 2 ** 38
+[/cc]
+或
+[cc lang="python"]
+print 2 << 37
+[/cc]
+根据页面提示
+“Hint: try to change the URL address.”
+将算得的值替换进url中，进入下一题。

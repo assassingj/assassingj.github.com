@@ -1,0 +1,9 @@
+---
+layout: post
+title: '在鹏城'
+date: 2007-8-30
+wordpress_id: 13
+permalink: /blogs/13
+comments: true
+---
+<![CDATA[好久没写了 登上来冒一个泡自我激励一下 多学点东西 多做项目 

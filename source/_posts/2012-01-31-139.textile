@@ -1,0 +1,35 @@
+---
+layout: post
+title: 'pythonchallenge专题－4'
+date: 2012-1-31
+wordpress_id: 139
+permalink: /blogs/139
+comments: true
+---
+<p>第4题地址 <a href="http://www.pythonchallenge.com/pc/def/equality.html" title="http://www.pythonchallenge.com/pc/def/equality.html">http://www.pythonchallenge.com/pc/def/equality.html</a></p>
+
+<p>正如晓兵哥的口头禅所言，这道题中的5支蜡烛“闪瞎了我的一双钛合金狗眼”。
+读了好几遍题目，终于有点感觉了，意思是一个小写字母两边站3个大写字母，找出符合这种模式的字母即可,这时才发现页面中这张图片太贴切了。</p>
+
+<p>字母呢？在html source code中！
+老办法，将源文件中的相关内容copy成一个文件"4-source.txt"
+<a href="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.38.37-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.38.37-PM.png" alt="" title="Screen Shot 2012-01-31 at 7.38.37 PM" width="677" height="276" class="alignnone size-full wp-image-140" /></a></p>
+
+<p>祭起正则表达式，最终的代码如下
+[cc lang="python"]
+import re
+f = open("4-source.txt", "r")
+text = f.read()
+p = re.compile('[^A-Z][A-Z]{3}[a-z][A-Z]{3}[^A-Z]')
+list = p.findall(text) 
+print "".join([letters[4:5] for letters in list])
+f.close()
+[/cc]</p>
+
+<p>中间有两次调整：
+1. 开始构造的pattern是"[A-Z]{3}[a-z][A-Z]{3}",发现拿到的结果非常混乱，最后检查题目发现没有注意到
+<a href="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.43.03-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.43.03-PM.png" alt="" title="Screen Shot 2012-01-31 at 7.43.03 PM" width="616" height="26" class="alignnone size-full wp-image-141" /></a>
+中的那个用大写来强调的单词"EXACTLY".后面才改成了"[^A-Z][A-Z]{3}[a-z][A-Z]{3}[^A-Z]"</p>
+
+<p>2.拿到的结果需要取出中间那个小写字母，连起来组成了一个单词"linkedlist"
+over.</p>

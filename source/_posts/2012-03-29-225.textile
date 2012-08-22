@@ -1,0 +1,23 @@
+---
+layout: post
+title: '换个GTD－wunderlist试用'
+date: 2012-3-29
+wordpress_id: 225
+permalink: /blogs/225
+comments: true
+---
+<div style="font-size: 16px;">对于我这种做事拖拉，并且无数想法间隙性从脑中涌现的人来说，GTD和笔记软件是不能少的。GTD一直以来都用着things,但是始终没找到android下的客户端，今天终于感觉到不爽了。比较N久，终于决定下个<a href="http://www.wunderlist.com/" title="wunderlist" target="_blank">wunderlist</a>来试用一下。</div>
+<div style="font-size: 16px;"></div>
+<div style="font-size: 16px;">选中wunderlist有如下原因：</div>
+<div><ol>
+<li><span style="font-size: 16px;">有android客户端，电脑手机一个都不能少</span></li>
+<li><span style="font-size: 16px;">支持云端存储同步</span></li>
+<li><span style="font-size: 16px;">Free!</span></li>
+</ol>
+<p> </p>
+<p style="font-size: 18px;">总体感觉和things差不多，用list取代了things的project和area功能，与things相比，少了tag的概念</p>
+<p style="font-size: 18px;"><img title="wunderlist.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/03/wunderlist.jpg" border="0" alt="Wunderlist" width="600" height="376" /></p>
+<p style="font-size: 18px;"><img title="desktop.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/03/desktop1.jpg" border="0" alt="Desktop" width="600" height="375" /></p>
+<p style="font-size: 18px;">附上原things的截图，方便对比</p>
+<p style="font-size: 18px;"><img title="things.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/03/things.jpg" border="0" alt="Things" width="600" height="411" /></p>
+</div>

@@ -1,0 +1,29 @@
+---
+layout: post
+title: '健康很重要－cron+growl来提醒我喝水'
+date: 2012-4-6
+wordpress_id: 229
+permalink: /blogs/229
+comments: true
+---
+<h1 style="font-size: 14px;">背景</h1>
+<p style="font-size: 14px;"><span style="font-size: 15px;">身为一名programmer，沉浸在自己的代码世界忽略其他是常有的事情。“山中无甲子,寒尽不知年”，猛一回头一个下午又过去了，今天又忘记喝水了，脸色又黄又油，小名都快由黑皮改为黄皮了，晚上回家被狠P了几句。</span></p>
+<p style="font-size: 14px;">我需要一个助理，定时提醒我喝水，cron是UNIX世界的贴心管家，他总是准时按你的吩咐做事情。MAC下cron当然存在，但是没有了dbus notification，我们的管家叫哪位下人来通知我喝水呢？答案是growl.</p>
+<h1 style="font-size: 14px;"></h1>
+<h1 style="font-size: 14px;">执行</h1>
+<p><span style="font-size: 15px;">我本机的growl的version是1.3.3，是自己download了源码compile出来的。默认安装时是没有装上growl notify工具的，所以第一步是准备好我们的growl notify.进入growl源码目录，growlnotify工具在 源码目录/Extras/growlnotify目录下，果断执行：</span></p>
+[cc lang="python"]
+make
+sudo make install
+[/cc]
+<p style="font-size: 15px;">接下来再写个cron表达式，与linux下不同，在MAC下我试了好久都无法以crontab -e的方式加入表达式，最后直接编辑/etc/crontab文件，append如下内容</p>
+[cc lang="python"]
+0 10,15 * * * penggaojian /usr/local/bin/growlnotify -t "喝水啦" -m "`date` 到了" -s
+[/cc]
+<p style="font-size: 15px;">效果就是每天的10点和15点，会pop一个提示窗出来. "-s"参数决定了如果我不手工关掉这个提醒，它就和我耗着不自动消失</p>
+<p style="font-size: 15px;">搞定，收工。最终效果如图:</p>
+<p style="font-size: 15px;"><img title="pop.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/04/pop.jpg" border="0" alt="Pop" width="600" height="375" /></p>
+<p style="font-size: 15px;">为什么是10点和15点？这是老婆她五舅这位营养师说的</p>
+<p> </p>
+<p> </p>
+<p> </p>

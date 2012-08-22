@@ -1,0 +1,22 @@
+---
+layout: post
+title: '又一个AI网站'
+date: 2011-12-29
+wordpress_id: 82
+permalink: /blogs/82
+comments: true
+---
+<a href="http://www.wolframalpha.com/" title="http://www.wolframalpha.com/">http://www.wolframalpha.com/</a>
+
+我试着问了几个问题
+1.who is Steven Jobs?
+answer:
+<a href="http://www.anlovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.18.55-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.18.55-PM-269x300.png" alt="" title="Screen Shot 2011-12-29 at 6.18.55 PM" width="269" height="300" class="alignnone size-medium wp-image-83" /></a>
+
+2.x^2+10x+1=76
+answer:
+<a href="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.22.37-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.22.37-PM.png" alt="" title="Screen Shot 2011-12-29 at 6.22.37 PM" width="567" height="621" class="alignnone size-full wp-image-84" /></a>
+
+3.all prime number bewteen 1 and 1000？
+answer:
+<a href="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.26.52-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.26.52-PM.png" alt="" title="Screen Shot 2011-12-29 at 6.26.52 PM" width="565" height="207" class="alignnone size-full wp-image-85" /></a>

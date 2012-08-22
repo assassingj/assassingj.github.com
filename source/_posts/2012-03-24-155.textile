@@ -1,0 +1,114 @@
+---
+layout: post
+title: '分析日志获取任务运行时长'
+date: 2012-3-24
+wordpress_id: 155
+permalink: /blogs/155
+comments: true
+---
+最近在做后台计算这块逻辑，所有的计算任务都在后台的线程池中运行。运行完所有任务后，如果统计每个任务的运行时长？所有任务的开始和结束都有打印日志（如下所示），只需要简单解析下日志文件即可。
+{% codeblock %}cat p4pnmas.log | grep task{% endcodeblock %}
+<a href="http://www.lovelin.info/wp-content/uploads/2012/03/Screen-Shot-2012-03-24-at-4.02.11-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2012/03/Screen-Shot-2012-03-24-at-4.02.11-PM.png" alt="" title="Screen Shot 2012-03-24 at 4.02.11 PM" width="795" height="38" class="alignnone size-full wp-image-159" /></a>
+
+我的第一念头是awk大法,步骤如下
+<ul>	
+<li>筛选出我感兴趣的标识任务启始结束的记录</li>
+	<li>两两合并</li>
+	<li>分析每行的两个时间戳，计算秒差</li>
+
+</ul>
+
+于是写出如下句子
+{% codeblock %}awk '{if(match($0, /(task received|task completed)/))print}' p4pnmas.log 
+|awk '{if(NR%2==1)printf("\n")}{printf "%s ", $0}END{printf("\n")}' 
+|awk '{split($2,start,":");split($13,end,":");second=0;second+=int((end[1] - start[1]) * 3600);secode+=int((end[2] - start[2])*60);secode+=int(substr(end[3],1,2)-substr(start[3],1,2));print $11,second, int(substr(end[3],1,2)-substr(start[3],1,2)),"\n", $2, $13}'{% endcodeblock %}
+
+写完后才发现有如下问题：
+<ul>	
+<li>多线程时，相邻的两行并不一定是某条任务的开始和结束</li>
+<li>任务中途出现问题，并没有正常结束，于是后面的全部错位</li>
+</ul>
+
+不想再伤脑筋用awk解决如上问题，果断python,拥有丰富的库，语法简单明了。python是在JAVA之余，我最喜欢用的脚本语言之一。
+思路如下：
+<ul>	
+<li>用map来保存中间状态，key为某条任务的标识</li>
+<li>开始按条解析任务</li>
+<li>如果分析出是某条任务的开始，以任务ID为key,时间戳为value,将元素放入map</li>
+<li>如果分析出是某条任务的结束，在map中找到此任务的开始时间，如果没找到，打印error,如果找到，计算时间差，写入结果文件，从map中删除该元素</li>
+	<li>分析完后，还剩在map中的元素为有头无尾的任务，打印error</li>
+</ul>
+
+果然能正确分析出来所有的任务，因为分析时间比较长，觉得好玩再为其加上了一个console进度条
+整个程序如下：
+[cc lang="python"]
+#!/usr/bin/python
+
+import re
+import time
+import datetime
+import sys
+import os
+from progressbar import *
+
+
+
+format="%Y-%m-%d %H:%M:%S"
+startPattern = re.compile("^(.*?),.*?task received, custId=(.*?)$")
+endPattern = re.compile("^(.*?),.*?task completed, custId=(.*?)$")
+stack = {}
+
+def printInfo(msg):
+    now = time.strftime(format,time.localtime(time.time()))
+    print "%s: %s" % (now, msg)
+
+
+printInfo("prepare to start")
+
+input = open("p4pnmas.log", "r")
+ret = open("ret", "w")
+
+totalCount = 0
+for line in input:
+    totalCount += 1
+
+count = 0
+widgets = ['Progress: ', Percentage(), ' ', Bar(marker=RotatingMarker('>-=')),
+                   ' ', ETA(), ' ', Counter()]
+pbar = ProgressBar(widgets=widgets, maxval=totalCount).start()
+
+printInfo("start")
+input.seek(0)
+for line in input:
+    count += 1
+    if count % 1000 == 0:
+        pbar.update(count)
+    m = startPattern.search(line)
+    if not m:
+        m = endPattern.search(line)
+        if not m:
+            continue
+        custId = m.group(2)
+        if not stack.has_key(custId):
+            print "unknown start time , custId=%s" % custId
+            continue
+        start=datetime.datetime.strptime(stack[custId],format)
+        end=datetime.datetime.strptime(m.group(1),format)
+        ret.write("%s,%d\n" % (custId, (end-start).seconds))
+        del stack[custId]
+        continue
+    stack[m.group(2)] = m.group(1)
+pbar.finish()
+
+if len(stack) > 0 :
+    print "the following cust has uncompleted:"
+    for key in stack.keys():
+        print key
+    
+input.close()
+ret.close()
+printInfo("end")
+[/cc]
+
+运行效果如下图：
+<a href="http://www.lovelin.info/wp-content/uploads/2012/03/Screen-Shot-2012-03-24-at-4.36.58-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2012/03/Screen-Shot-2012-03-24-at-4.36.58-PM.png" alt="" title="Screen Shot 2012-03-24 at 4.36.58 PM" width="597" height="75" class="alignnone size-full wp-image-175" /></a>

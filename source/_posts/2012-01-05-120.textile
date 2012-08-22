@@ -1,0 +1,40 @@
+---
+layout: post
+title: 'pythonchallenge专题－3'
+date: 2012-1-5
+wordpress_id: 120
+permalink: /blogs/120
+comments: true
+---
+第3题地址<a href="http://www.pythonchallenge.com/pc/def/ocr.html" title="http://www.pythonchallenge.com/pc/def/ocr.html" target="_blank">http://www.pythonchallenge.com/pc/def/ocr.html</a>。
+不得不说这个URL非常巧妙，上一题是一个字母mapping相关的，URL中带上"map"做为题目的主题，"map"映射为"ocr"做为结果，而这一题看起来是图像识别相关的，所以"ocr"则可以成为本题的主题了。
+
+看到这句话
+[cc lang="bash"]recognize the characters. maybe they are in the book,
+but MAYBE they are in the page source.
+[/cc]
+知道玄机不在图片中，而在html源码中，于是打开页面源码，果然看到有提示
+[cc lang="javascript"]
+<!--
+find rare characters in the mess below:
+-->
+
+<!--
+%%$@_$^__#)^)&!_+]!*@&^}@[@%]()%+$&[(_@%+%$*^@$^!+]!&_#)_*}{}}!}_]$[%}@[{_@#_^{*
+@##&{#&{&)*%(]{{([*}@[@&]+!!*{)!}{%+{))])[!^})+)$]#{*+^((@^@}$[**$&^{$!@#$%)!@(&
+...
+-->
+[/cc]
+看来是需要从这段火星文中找出所有的字母就OK了。
+
+将这段COPY出来，保存为一个文件"3-source.txt"，用python做如下运算
+[cc lang="python"]
+import string
+
+file = open("3-source.txt", "r")
+ret = [char for char in file.read() if char in string.letters]
+print "".join(ret)
+file.close()
+[/cc]
+
+算得结果为“equality”，将此单词替换URL中的“ocr”,进入下一题。
