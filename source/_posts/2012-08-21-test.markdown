@@ -1,0 +1,10 @@
+---
+layout: post
+title: "test"
+date: 2012-08-21 21:05
+comments: true
+categories: 
+---
+
+h1. hello
+* just a test
