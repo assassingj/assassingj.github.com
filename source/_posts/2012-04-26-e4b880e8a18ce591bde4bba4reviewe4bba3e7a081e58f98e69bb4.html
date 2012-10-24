@@ -1,0 +1,23 @@
+---
+layout: post
+title: 一行命令review代码变更
+categories:
+- technology
+tags:
+- linux
+- script
+- 命令
+published: true
+comments: true
+---
+<p><p style="font-size: 15px;">我觉得用命令行的最大好处之一是可以像影碟一样录好后重放无数次.</p>
+<p style="font-size: 15px;">每天的工作中，做code review是经常遇到的事情，怎样快速显示本分支的SVN变更.</p>
+<p style="font-size: 15px;">尝试了几次后，如下一句即可，在此备忘下。</p>
+<p style="font-size: 15px;">
+[cc lang="python"]svn di -r `svn log -v --stop-on-copy | grep -B4 "svn copy" | head -1 | awk '{print substr($1, 2)}'`:HEAD[/cc]</p>
+<p style="font-size: 15px;">做成alias或者写一句脚本，此后的review不用再每次找版本号找半天了.</p>
+<p style="font-size: 15px;">PS: 什么是HEAD?</p>
+<p style="font-size: 15px;">见<a href="http://en.wikipedia.org/wiki/Revision_control#Common_vocabulary">http://en.wikipedia.org/wiki/Revision_control#Common_vocabulary</a></p>
+<p style="font-size: 15px;"> </p>
+<p style="font-size: 15px;"> </p>
+<p> </p></p>

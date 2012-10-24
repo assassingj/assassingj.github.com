@@ -1,0 +1,34 @@
+---
+layout: post
+title: mac升级至10.8后mail rss的转移
+categories:
+- technology
+tags:
+- mac
+- python
+published: true
+comments: true
+---
+<p><p>升级至mountain lion后，猛的发现原来mail中订阅的rss全部不翼而飞，查阅资料后才知道新版mail不再支持rss了，所以需要将原来订阅好的rss转移下，这次下定决心全部挪到google reader中去，再用chrome plugin或者其他客户端来看，这样以后都不用担心丢失。</p>
+<p>做成这件事情需要两步：</p>
+<p>   1.找到我之前订阅的rss feed 列表</p>
+<p>   2.把列表中的feed全部subscribe到google reader中</p>
+<p>如果只是想找出feed列表是相当简单的，试过几次后发现，运行如下command就可以了：</p>
+<p><code>find ~/Library/Mail/V2/RSS/ -name "Info.plist" |xargs -I{}  grep -A 1 Feed {} | grep string | awk -F'[&lt;&gt;]' '{print $3}'</code></p>
+<p><a title="View 'rsslist' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066566462"><img title="rsslist" src="http://farm9.staticflickr.com/8031/8066566462_55ace23441.jpg" alt="rsslist" width="500" height="408" border="0" /></a></p>
+<p>如果需要将其自动import到google reader中，还需要用reader提供的api干点额外的活，我参考的api接口如下：</p>
+<p><a href="http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_%E4%BB%8B%E7%BB%8D">http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_介绍</a></p>
+<p>要订阅feed，需要如下几步:</p>
+<ul>
+<li>获取google auth</li>
+<li>获取token</li>
+<li>订阅指定的feed</li>
+</ul>
+<p>连带之前的找feed列表的功能，脚本如下
+<script src="https://gist.github.com/3863977.js?file=rssmail2reader.py"></script></p>
+
+<p>完整版(其实就是加上README)放在 <a href="https://github.com/assassingj/mailrss2google">https://github.com/assassingj/mailrss2google</a>中</p>
+<p>执行
+<code>python rsstranfer.py peng.gaojian@gmail.com</code>输入密码就OK了<br />
+完成后再访问google reader,之前的订阅全回来了～<a title="View 'google reader' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066506348"><img title="google reader" src="http://farm9.staticflickr.com/8179/8066506348_f9003e9d5e.jpg" alt="google reader" width="500" height="203" border="0" /></a></p>
+<p> </p></p>

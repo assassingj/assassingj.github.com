@@ -1,0 +1,40 @@
+---
+layout: post
+title: pythonchallenge专题－4
+categories:
+- technology
+tags:
+- python
+- pythonchallenge
+- 正则表达式
+published: true
+comments: true
+---
+<p><p>第4题地址 <a href="http://www.pythonchallenge.com/pc/def/equality.html" title="http://www.pythonchallenge.com/pc/def/equality.html">http://www.pythonchallenge.com/pc/def/equality.html</a></p></p>
+
+<p><p>正如晓兵哥的口头禅所言，这道题中的5支蜡烛“闪瞎了我的一双钛合金狗眼”。<br />
+读了好几遍题目，终于有点感觉了，意思是一个小写字母两边站3个大写字母，找出符合这种模式的字母即可,这时才发现页面中这张图片太贴切了。</p></p>
+
+<p><p>字母呢？在html source code中！<br />
+老办法，将源文件中的相关内容copy成一个文件"4-source.txt"
+<a href="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.38.37-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.38.37-PM.png" alt="" title="Screen Shot 2012-01-31 at 7.38.37 PM" width="677" height="276" class="alignnone size-full wp-image-140" /></a></p></p>
+
+<p><p>祭起正则表达式，最终的代码如下<br />
+[cc lang="python"]<br />
+import re<br />
+f = open("4-source.txt", "r")<br />
+text = f.read()<br />
+p = re.compile('[^A-Z][A-Z]{3}[a-z][A-Z]{3}[^A-Z]')<br />
+list = p.findall(text) <br />
+print "".join([letters[4:5] for letters in list])<br />
+f.close()<br />
+[/cc]</p></p>
+
+<p><p>中间有两次调整：<br />
+1. 开始构造的pattern是"[A-Z]{3}[a-z][A-Z]{3}",发现拿到的结果非常混乱，最后检查题目发现没有注意到
+<a href="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.43.03-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2012/01/Screen-Shot-2012-01-31-at-7.43.03-PM.png" alt="" title="Screen Shot 2012-01-31 at 7.43.03 PM" width="616" height="26" class="alignnone size-full wp-image-141" /></a>
+中的那个用大写来强调的单词"EXACTLY".后面才改成了"[^A-Z][A-Z]{3}[a-z][A-Z]{3}[^A-Z]"</p></p>
+
+<p><p>2.拿到的结果需要取出中间那个小写字母，连起来组成了一个单词"linkedlist"<br />
+over.</p>
+</p>

@@ -1,0 +1,33 @@
+---
+layout: post
+title: 实现ip地址自动上传过程分析
+categories:
+- technology
+tags:
+- linux
+- mac
+- network
+published: true
+comments: true
+---
+<p><p>不像大学那会，想买台赛扬CPU没独显也无所谓的台式机的小小愿望都无法实现，工作了的同学很多时候有好几台电脑。公司一台，家里一台，或者公司台式机一台，笔记本一台。如果想从A电脑SSH到B电脑，而B电脑又是DHCP的居无定所（没有固定IP），那么就需要B自己告诉我们IP地址。</p>
+<p>要达成目标我们需要做三件事情：</p>
+<ol>
+<li>在某些时刻B电脑找出本机IP地址</li>
+<li>.upload这一IP到一个公共空间</li>
+<li>A电脑获取这一IP</li>
+</ol>
+<h3>分析</h3>
+<p>第1点，在linux上找出本机IP方法是很多的，在ifconfig后用grep, cut, awk, sed等处理下就好，关键在于何时运行呢？有两种方法：一种是借助cron工具定时去执行,一种是在网络环境发生变化时触发执行，有点像select与epoll的区别。如果以去银行排队办业务为例来说，前者就像是每2分钟去柜台问下可不可以为我办了，后者则是在大厅经理那拿一个注册号码，轮到你了就广播叫你,显然后者的机制会有效率且实时.</p>
+<p>ubuntu下可借助/etc/network/if-up.d这个文件夹, 在网络接口起来后会执行该文件夹下面所有可执行的脚本（与/etc/rcx.d类似,不过触发时间点一个是在系统启动时一个是在网络接口准备好时），所以我们可以将采集IP的脚本扔到这个文件夹下，这样当网络有变化时会自动执行了</p>
+<p>mac下稍微麻烦点, 先借助scutil看看我们关心的网络变化这个点在系统中是如何注册的,我关心的是ipv4的变化(也可以是你关心的具体某个网络接口的state (如: subKey [54] = State:/Network/Interface/en1/IPv4)</p>
+<p><a title="View 'scutil2' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112241063"><img title="scutil2" src="http://farm9.staticflickr.com/8333/8112241063_895c69c804.jpg" alt="scutil2" width="500" height="223" border="0" /></a></p>
+<p>当我们的网络接口发生变化时,就可以根据这个key来监控了(如下为停止无线和启用无线触发的)</p>
+<p><a title="View 'watch' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112258368"><img title="watch" src="http://farm9.staticflickr.com/8050/8112258368_1d9c3d882e.jpg" alt="watch" width="500" height="149" border="0" /></a></p>
+<p>要做到全自动,可以借助python+SystemConfiguration,脚本如下(获取IP部分可自由修改,甚至用shell等其他方式实现,我们需要的只是trigger这个动作)
+<script src="https://gist.github.com/3931024.js?file=network.py"></script>
+</p>
+<p>第2点，可选的很多. ftp, 个人空间, github等等</p>
+<p>以github为例,可以将新的IP push到repository中,这样其他需要查看该IP的机器pull一下就可以获得最新的IP</p></p>
+
+<p><p>第3点 简单的办法就是轮询了,还是以github为例,定时pull最新的版本下来就OK了,不过会有一定的延时(你不会配置一个cron 每秒扫描一次网络吧??), 能想到的实时的方案就是借助自己的VPS, 以VPS为中介服务器,A电脑通过socket到VPS上, B电脑在获取到新的IP后将IP推送到VPS上(可以开socket,也可以直接rsync,由VPS的inotify-tools监控文件变化),VPS服务器收到新IP后发送IP给A电脑, 并触发事件(借助这个事件我们可以做一些更新的动作,比如A电脑绑定了hosts文件的可以重写hosts文件)</p></p>

@@ -1,0 +1,57 @@
+---
+layout: post
+title: 练个手
+categories:
+- technology
+tags:
+- algorithm
+- python
+published: true
+comments: true
+---
+<p>1－1000000 这样一个无序序列，加入一个1－1000000之间的数，如何在不使用额外空间的情况下快速找出这个数？</p>
+
+<p>[cc lang="python"]<br />
+#!/usr/bin/python<br />
+#coding=utf-8</p>
+
+<p>import random</p>
+
+<p>COUNT = 1000000</p>
+
+<p>ranNum = random.randint(1,COUNT)<br />
+print "repeating number: %d"% ranNum<br />
+nums = [i for i in xrange(1,COUNT + 1)]<br />
+nums.append(ranNum)<br />
+random.shuffle(nums)</p>
+
+<p>nums[0], p = 0, nums[0]<br />
+while True:<br />
+    if nums[p] == 0:<br />
+        print "found %d" % p<br />
+        break<br />
+    nums[p], p = 0, nums[p]</p>
+
+<p>[/cc]</p>
+
+<p>但是我time了一下这种算法，比较不稳定，大部分时候需要1秒以上的时间才能找到</p>
+
+<p>如果用以下这种计算和再相减的算法，时间可以稳定在0.8秒左右<br />
+[cc lang="python"]<br />
+#!/usr/bin/python<br />
+#coding=utf-8</p>
+
+<p>import random</p>
+
+<p>COUNT = 1000000</p>
+
+<p>ranNum = random.randint(1,COUNT)<br />
+print "repeating number: %d" % ranNum<br />
+nums = [i for i in xrange(1,COUNT + 1)]<br />
+nums.append(ranNum)<br />
+random.shuffle(nums)</p>
+
+<p>sum1 = sum(nums)<br />
+sum2 = (1 + COUNT)*COUNT/2<br />
+print "found %d" % (sum1 - sum2)<br />
+[/cc] </p>
