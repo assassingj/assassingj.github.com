@@ -3,7 +3,7 @@ layout: post
 title: "shell版的下妹子图"
 date: 2013-01-22 00:43
 comments: true
-categories: 
+categories: technology,tips
 ---
 
 在osc上看到一篇python写的[下妹子图][1],试着改为一句shell,效果很不错:
