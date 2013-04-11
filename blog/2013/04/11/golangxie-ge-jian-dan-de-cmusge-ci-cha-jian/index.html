@@ -10,10 +10,9 @@
 
   
   <meta name="description" content="一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
-目前已实现：
-1. 检测cmus运行状态
-2. 获取cmus当时正在play的歌曲meta信息
-3. 根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me &hellip;">
+目前已实现： 检测cmus运行状态
+获取cmus当时正在play的歌曲meta信息
+根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">
+  <link rel="canonical" href="http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -65,7 +64,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.lovelin.info" />
+    <input type="hidden" name="q" value="site:assassingj.github.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -109,17 +108,26 @@
 
 
 <div class="entry-content"><p>一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
-目前已实现：
-1. 检测cmus运行状态
-2. 获取cmus当时正在play的歌曲meta信息
-3. 根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API
-4. 打印第一匹配的歌词</p>
+目前已实现：</p>
 
-<p>待实现:
-1. 终端下的termbox
-2. 同一首歌的cache
-3. 自主search 选择歌词
-4. &#8230;</p>
+<ol>
+<li>检测cmus运行状态</li>
+<li>获取cmus当时正在play的歌曲meta信息</li>
+<li>根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API</li>
+<li>打印第一匹配的歌词</li>
+</ol>
+
+
+<p>待实现:</p>
+
+<ol>
+<li>终端下的termbox</li>
+<li>同一首歌的cache</li>
+<li>自主search 选择歌词</li>
+<li>歌词滚动？？</li>
+<li>&#8230;</li>
+</ol>
+
 
 <script src="https://gist.github.com/assassingj/5363551.js"></script>
 
@@ -161,7 +169,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/" data-via="" data-counturl="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/" data-via="" data-counturl="http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/" >Tweet</a>
   
   
   

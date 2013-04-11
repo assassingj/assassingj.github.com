@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: golang | 黑皮窝]]></title>
-  <link href="http://www.lovelin.info/blog/categories/golang/atom.xml" rel="self"/>
-  <link href="http://www.lovelin.info/"/>
-  <updated>2013-04-11T22:05:31+08:00</updated>
-  <id>http://www.lovelin.info/</id>
+  <link href="http://assassingj.github.com/blog/categories/golang/atom.xml" rel="self"/>
+  <link href="http://assassingj.github.com/"/>
+  <updated>2013-04-11T22:11:47+08:00</updated>
+  <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
     
@@ -15,21 +15,30 @@
   
   <entry>
     <title type="html"><![CDATA[golang写个简单的cmus歌词插件]]></title>
-    <link href="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
+    <link href="http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
     <updated>2013-04-11T21:53:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
+    <id>http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
     <content type="html"><![CDATA[<p>一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
-目前已实现：
-1. 检测cmus运行状态
-2. 获取cmus当时正在play的歌曲meta信息
-3. 根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API
-4. 打印第一匹配的歌词</p>
+目前已实现：</p>
 
-<p>待实现:
-1. 终端下的termbox
-2. 同一首歌的cache
-3. 自主search 选择歌词
-4. ...</p>
+<ol>
+<li>检测cmus运行状态</li>
+<li>获取cmus当时正在play的歌曲meta信息</li>
+<li>根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API</li>
+<li>打印第一匹配的歌词</li>
+</ol>
+
+
+<p>待实现:</p>
+
+<ol>
+<li>终端下的termbox</li>
+<li>同一首歌的cache</li>
+<li>自主search 选择歌词</li>
+<li>歌词滚动？？</li>
+<li>...</li>
+</ol>
+
 
 <script src="https://gist.github.com/assassingj/5363551.js"></script>
 

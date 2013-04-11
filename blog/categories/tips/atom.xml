@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tips | 黑皮窝]]></title>
-  <link href="http://www.lovelin.info/blog/categories/tips/atom.xml" rel="self"/>
-  <link href="http://www.lovelin.info/"/>
-  <updated>2013-04-11T22:05:31+08:00</updated>
-  <id>http://www.lovelin.info/</id>
+  <link href="http://assassingj.github.com/blog/categories/tips/atom.xml" rel="self"/>
+  <link href="http://assassingj.github.com/"/>
+  <updated>2013-04-11T22:11:47+08:00</updated>
+  <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[此去经年]]></title>
-    <link href="http://www.lovelin.info/blog/2013/03/17/ci-qu-jing-nian/"/>
+    <link href="http://assassingj.github.com/blog/2013/03/17/ci-qu-jing-nian/"/>
     <updated>2013-03-17T14:37:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2013/03/17/ci-qu-jing-nian</id>
+    <id>http://assassingj.github.com/blog/2013/03/17/ci-qu-jing-nian</id>
     <content type="html"><![CDATA[<p>又是一年。春节时又回到了常德桃源,刚刚走到爷爷的坟前还没来得及祭坟，就看到年前腿被撞骨折了的奶奶拄着拐杖在等候，所谓的"野老念牧童，倚杖候柴扉"的情景大概也不过如此。</p>
 
 <p>和老婆走到昔日童年的乐园而今满是杂草的老家遗址, 我指着对面山岗对她说, 小时候每次爸爸回来,开的车就停在那条路上。吃完晚饭, 二叔从电脑里找出了已经泛黄然后翻拍的老照片，照片上的很多像妈妈那样的年青人都已经老去，而当时被抱在各自妈妈怀里的像我这样的小屁孩，则领着各自的另一半回来拜访，在这过程中经历了坐车从免票，到半票，到全票的过程,直至准备培养免票的下一代，这让我联想到数学中的圆，计算机中的while， 佛教的轮回，道家的五行，质量管理的PDCA，自然界的生态系统。。。</p>
@@ -38,9 +38,9 @@
   
   <entry>
     <title type="html"><![CDATA[那七年，我们一起（    ）]]></title>
-    <link href="http://www.lovelin.info/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89/"/>
+    <link href="http://assassingj.github.com/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89/"/>
     <updated>2012-05-20T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89</id>
+    <id>http://assassingj.github.com/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89</id>
     <content type="html"><![CDATA[<p><div style="font-size: 15px;">
 <p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--></p>
 <div style="font-family: Arial;"><br />
@@ -72,9 +72,9 @@
   
   <entry>
     <title type="html"><![CDATA[健康很重要－cron+growl来提醒我喝水]]></title>
-    <link href="http://www.lovelin.info/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/"/>
+    <link href="http://assassingj.github.com/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/"/>
     <updated>2012-04-06T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4</id>
+    <id>http://assassingj.github.com/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4</id>
     <content type="html"><![CDATA[<p><h1 style="font-size: 14px;">背景</h1>
 <p style="font-size: 14px;"><span style="font-size: 15px;">身为一名programmer，沉浸在自己的代码世界忽略其他是常有的事情。“山中无甲子,寒尽不知年”，猛一回头一个下午又过去了，今天又忘记喝水了，脸色又黄又油，小名都快由黑皮改为黄皮了，晚上回家被狠P了几句。</span></p>
 <p style="font-size: 14px;">我需要一个助理，定时提醒我喝水，cron是UNIX世界的贴心管家，他总是准时按你的吩咐做事情。MAC下cron当然存在，但是没有了dbus notification，我们的管家叫哪位下人来通知我喝水呢？答案是growl.</p>
@@ -102,9 +102,9 @@ sudo make install<br />
   
   <entry>
     <title type="html"><![CDATA[换个GTD－wunderlist试用]]></title>
-    <link href="http://www.lovelin.info/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8/"/>
+    <link href="http://assassingj.github.com/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8/"/>
     <updated>2012-03-29T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8</id>
+    <id>http://assassingj.github.com/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8</id>
     <content type="html"><![CDATA[<p><div style="font-size: 16px;">对于我这种做事拖拉，并且无数想法间隙性从脑中涌现的人来说，GTD和笔记软件是不能少的。GTD一直以来都用着things,但是始终没找到android下的客户端，今天终于感觉到不爽了。比较N久，终于决定下个<a href="http://www.wunderlist.com/" title="wunderlist" target="_blank">wunderlist</a>来试用一下。</div>
 <div style="font-size: 16px;"></div>
 <div style="font-size: 16px;">选中wunderlist有如下原因：</div>
@@ -126,9 +126,9 @@ sudo make install<br />
   
   <entry>
     <title type="html"><![CDATA[又一位友人离去]]></title>
-    <link href="http://www.lovelin.info/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb/"/>
+    <link href="http://assassingj.github.com/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb/"/>
     <updated>2012-03-27T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb</id>
+    <id>http://assassingj.github.com/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb</id>
     <content type="html"><![CDATA[<p><p> </p>
 <div style="font-size: 17px; font-family: 'Heiti SC';"><span style="font-family: Arial;">想起之前EDM的日子，你常常说要有颗大心脏，想不到你自己却倒在了阿喀琉斯之踵下。</span></div>
 <div style="font-size: 17px; font-family: 'Heiti SC';"><span style="font-family: Arial;"><br /></span></div>

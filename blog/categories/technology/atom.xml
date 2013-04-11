@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: technology | 黑皮窝]]></title>
-  <link href="http://www.lovelin.info/blog/categories/technology/atom.xml" rel="self"/>
-  <link href="http://www.lovelin.info/"/>
-  <updated>2013-04-11T22:05:31+08:00</updated>
-  <id>http://www.lovelin.info/</id>
+  <link href="http://assassingj.github.com/blog/categories/technology/atom.xml" rel="self"/>
+  <link href="http://assassingj.github.com/"/>
+  <updated>2013-04-11T22:11:47+08:00</updated>
+  <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
     
@@ -15,21 +15,30 @@
   
   <entry>
     <title type="html"><![CDATA[golang写个简单的cmus歌词插件]]></title>
-    <link href="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
+    <link href="http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
     <updated>2013-04-11T21:53:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
+    <id>http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
     <content type="html"><![CDATA[<p>一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
-目前已实现：
-1. 检测cmus运行状态
-2. 获取cmus当时正在play的歌曲meta信息
-3. 根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API
-4. 打印第一匹配的歌词</p>
+目前已实现：</p>
 
-<p>待实现:
-1. 终端下的termbox
-2. 同一首歌的cache
-3. 自主search 选择歌词
-4. ...</p>
+<ol>
+<li>检测cmus运行状态</li>
+<li>获取cmus当时正在play的歌曲meta信息</li>
+<li>根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API</li>
+<li>打印第一匹配的歌词</li>
+</ol>
+
+
+<p>待实现:</p>
+
+<ol>
+<li>终端下的termbox</li>
+<li>同一首歌的cache</li>
+<li>自主search 选择歌词</li>
+<li>歌词滚动？？</li>
+<li>...</li>
+</ol>
+
 
 <script src="https://gist.github.com/assassingj/5363551.js"></script>
 
@@ -40,9 +49,9 @@
   
   <entry>
     <title type="html"><![CDATA[shell版的下妹子图]]></title>
-    <link href="http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu/"/>
+    <link href="http://assassingj.github.com/blog/2013/01/22/shellban-de-xia-mei-zi-tu/"/>
     <updated>2013-01-22T00:43:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu</id>
+    <id>http://assassingj.github.com/blog/2013/01/22/shellban-de-xia-mei-zi-tu</id>
     <content type="html"><![CDATA[<p>在osc上看到一篇python写的<a href="http://www.oschina.net/code/snippet_13769_17481" title="下妹子图">下妹子图</a>,试着改为一句shell,效果很不错:
 <code>
 for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/null| grep 'img src=.*.jpg.*' | sed 's/.*img src="(.*.jpg).*$/\1/' | xargs wget --timeout=5; done
@@ -52,9 +61,9 @@ for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/n
   
   <entry>
     <title type="html"><![CDATA[tmux使用心得小记]]></title>
-    <link href="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
+    <link href="http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
     <updated>2012-10-25T13:55:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
+    <id>http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
     <content type="html"><![CDATA[<h2>前言</h2>
 
 <p>有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性:</p>
@@ -155,9 +164,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[实现ip地址自动上传过程分析]]></title>
-    <link href="http://www.lovelin.info/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/"/>
+    <link href="http://assassingj.github.com/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/"/>
     <updated>2012-10-22T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90</id>
+    <id>http://assassingj.github.com/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90</id>
     <content type="html"><![CDATA[<p><p>不像大学那会，想买台赛扬CPU没独显也无所谓的台式机的小小愿望都无法实现，工作了的同学很多时候有好几台电脑。公司一台，家里一台，或者公司台式机一台，笔记本一台。如果想从A电脑SSH到B电脑，而B电脑又是DHCP的居无定所（没有固定IP），那么就需要B自己告诉我们IP地址。</p>
 <p>要达成目标我们需要做三件事情：</p>
 <ol>
@@ -188,9 +197,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[mac升级至10.8后mail rss的转移]]></title>
-    <link href="http://www.lovelin.info/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/"/>
+    <link href="http://assassingj.github.com/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/"/>
     <updated>2012-10-08T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb</id>
+    <id>http://assassingj.github.com/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb</id>
     <content type="html"><![CDATA[<p><p>升级至mountain lion后，猛的发现原来mail中订阅的rss全部不翼而飞，查阅资料后才知道新版mail不再支持rss了，所以需要将原来订阅好的rss转移下，这次下定决心全部挪到google reader中去，再用chrome plugin或者其他客户端来看，这样以后都不用担心丢失。</p>
 <p>做成这件事情需要两步：</p>
 <p>   1.找到我之前订阅的rss feed 列表</p>

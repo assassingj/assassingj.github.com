@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[黑皮窝]]></title>
-  <link href="http://www.lovelin.info/atom.xml" rel="self"/>
-  <link href="http://www.lovelin.info/"/>
-  <updated>2013-04-11T22:05:31+08:00</updated>
-  <id>http://www.lovelin.info/</id>
+  <link href="http://assassingj.github.com/atom.xml" rel="self"/>
+  <link href="http://assassingj.github.com/"/>
+  <updated>2013-04-11T22:11:47+08:00</updated>
+  <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
     
@@ -15,21 +15,30 @@
   
   <entry>
     <title type="html"><![CDATA[golang写个简单的cmus歌词插件]]></title>
-    <link href="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
+    <link href="http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
     <updated>2013-04-11T21:53:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
+    <id>http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
     <content type="html"><![CDATA[<p>一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
-目前已实现：
-1. 检测cmus运行状态
-2. 获取cmus当时正在play的歌曲meta信息
-3. 根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API
-4. 打印第一匹配的歌词</p>
+目前已实现：</p>
 
-<p>待实现:
-1. 终端下的termbox
-2. 同一首歌的cache
-3. 自主search 选择歌词
-4. &#8230;</p>
+<ol>
+<li>检测cmus运行状态</li>
+<li>获取cmus当时正在play的歌曲meta信息</li>
+<li>根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API</li>
+<li>打印第一匹配的歌词</li>
+</ol>
+
+
+<p>待实现:</p>
+
+<ol>
+<li>终端下的termbox</li>
+<li>同一首歌的cache</li>
+<li>自主search 选择歌词</li>
+<li>歌词滚动？？</li>
+<li>&#8230;</li>
+</ol>
+
 
 <script src="https://gist.github.com/assassingj/5363551.js"></script>
 
@@ -40,9 +49,9 @@
   
   <entry>
     <title type="html"><![CDATA[此去经年]]></title>
-    <link href="http://www.lovelin.info/blog/2013/03/17/ci-qu-jing-nian/"/>
+    <link href="http://assassingj.github.com/blog/2013/03/17/ci-qu-jing-nian/"/>
     <updated>2013-03-17T14:37:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2013/03/17/ci-qu-jing-nian</id>
+    <id>http://assassingj.github.com/blog/2013/03/17/ci-qu-jing-nian</id>
     <content type="html"><![CDATA[<p>又是一年。春节时又回到了常德桃源,刚刚走到爷爷的坟前还没来得及祭坟，就看到年前腿被撞骨折了的奶奶拄着拐杖在等候，所谓的&#8221;野老念牧童，倚杖候柴扉&#8221;的情景大概也不过如此。</p>
 
 <p>和老婆走到昔日童年的乐园而今满是杂草的老家遗址, 我指着对面山岗对她说, 小时候每次爸爸回来,开的车就停在那条路上。吃完晚饭, 二叔从电脑里找出了已经泛黄然后翻拍的老照片，照片上的很多像妈妈那样的年青人都已经老去，而当时被抱在各自妈妈怀里的像我这样的小屁孩，则领着各自的另一半回来拜访，在这过程中经历了坐车从免票，到半票，到全票的过程,直至准备培养免票的下一代，这让我联想到数学中的圆，计算机中的while， 佛教的轮回，道家的五行，质量管理的PDCA，自然界的生态系统。。。</p>
@@ -63,9 +72,9 @@
   
   <entry>
     <title type="html"><![CDATA[shell版的下妹子图]]></title>
-    <link href="http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu/"/>
+    <link href="http://assassingj.github.com/blog/2013/01/22/shellban-de-xia-mei-zi-tu/"/>
     <updated>2013-01-22T00:43:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu</id>
+    <id>http://assassingj.github.com/blog/2013/01/22/shellban-de-xia-mei-zi-tu</id>
     <content type="html"><![CDATA[<p>在osc上看到一篇python写的<a href="http://www.oschina.net/code/snippet_13769_17481" title="下妹子图">下妹子图</a>,试着改为一句shell,效果很不错:
 <code>
 for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/null| grep 'img src=.*.jpg.*' | sed 's/.*img src="(.*.jpg).*$/\1/' | xargs wget --timeout=5; done
@@ -75,9 +84,9 @@ for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/n
   
   <entry>
     <title type="html"><![CDATA[tmux使用心得小记]]></title>
-    <link href="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
+    <link href="http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
     <updated>2012-10-25T13:55:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
+    <id>http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
     <content type="html"><![CDATA[<h2>前言</h2>
 
 <p>有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性:</p>
@@ -178,9 +187,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[实现ip地址自动上传过程分析]]></title>
-    <link href="http://www.lovelin.info/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/"/>
+    <link href="http://assassingj.github.com/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/"/>
     <updated>2012-10-22T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90</id>
+    <id>http://assassingj.github.com/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90</id>
     <content type="html"><![CDATA[<p><p>不像大学那会，想买台赛扬CPU没独显也无所谓的台式机的小小愿望都无法实现，工作了的同学很多时候有好几台电脑。公司一台，家里一台，或者公司台式机一台，笔记本一台。如果想从A电脑SSH到B电脑，而B电脑又是DHCP的居无定所（没有固定IP），那么就需要B自己告诉我们IP地址。</p>
 <p>要达成目标我们需要做三件事情：</p>
 <ol>
@@ -207,9 +216,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[mac升级至10.8后mail rss的转移]]></title>
-    <link href="http://www.lovelin.info/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/"/>
+    <link href="http://assassingj.github.com/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/"/>
     <updated>2012-10-08T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb</id>
+    <id>http://assassingj.github.com/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb</id>
     <content type="html"><![CDATA[<p><p>升级至mountain lion后，猛的发现原来mail中订阅的rss全部不翼而飞，查阅资料后才知道新版mail不再支持rss了，所以需要将原来订阅好的rss转移下，这次下定决心全部挪到google reader中去，再用chrome plugin或者其他客户端来看，这样以后都不用担心丢失。</p>
 <p>做成这件事情需要两步：</p>
 <p>   1.找到我之前订阅的rss feed 列表</p>
@@ -238,9 +247,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[破VPN引发的网络问题]]></title>
-    <link href="http://www.lovelin.info/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298/"/>
+    <link href="http://assassingj.github.com/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298/"/>
     <updated>2012-05-26T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298</id>
+    <id>http://assassingj.github.com/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298</id>
     <content type="html"><![CDATA[<p><p>上个周末在家用VPN连上公司网络来写项目周报，公司的VPN系统会根据浏览器和操作系统来使用不同的VPN client. 很遗憾 mac下居然用的是一个applet，千辛万苦装上后能用了，中途出现CPU飙高的情况，我忍了，发完周报就把APPLET所在的网页关掉了，噩梦来了。</p>
 <p> </p>
 <p>上外网不能用了，ifconfig下出现两个VNIC的虚拟网卡且status为active。</p>
@@ -256,9 +265,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[那七年，我们一起（    ）]]></title>
-    <link href="http://www.lovelin.info/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89/"/>
+    <link href="http://assassingj.github.com/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89/"/>
     <updated>2012-05-20T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89</id>
+    <id>http://assassingj.github.com/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89</id>
     <content type="html"><![CDATA[<p><div style="font-size: 15px;">
 <p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--></p>
 <div style="font-family: Arial;"><br />
@@ -289,9 +298,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[一行命令review代码变更]]></title>
-    <link href="http://www.lovelin.info/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4/"/>
+    <link href="http://assassingj.github.com/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4/"/>
     <updated>2012-04-26T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4</id>
+    <id>http://assassingj.github.com/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4</id>
     <content type="html"><![CDATA[<p><p style="font-size: 15px;">我觉得用命令行的最大好处之一是可以像影碟一样录好后重放无数次.</p>
 <p style="font-size: 15px;">每天的工作中，做code review是经常遇到的事情，怎样快速显示本分支的SVN变更.</p>
 <p style="font-size: 15px;">尝试了几次后，如下一句即可，在此备忘下。</p>
@@ -308,9 +317,9 @@ setw synchronize-panes
   
   <entry>
     <title type="html"><![CDATA[健康很重要－cron+growl来提醒我喝水]]></title>
-    <link href="http://www.lovelin.info/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/"/>
+    <link href="http://assassingj.github.com/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/"/>
     <updated>2012-04-06T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4</id>
+    <id>http://assassingj.github.com/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4</id>
     <content type="html"><![CDATA[<p><h1 style="font-size: 14px;">背景</h1>
 <p style="font-size: 14px;"><span style="font-size: 15px;">身为一名programmer，沉浸在自己的代码世界忽略其他是常有的事情。“山中无甲子,寒尽不知年”，猛一回头一个下午又过去了，今天又忘记喝水了，脸色又黄又油，小名都快由黑皮改为黄皮了，晚上回家被狠P了几句。</span></p>
 <p style="font-size: 14px;">我需要一个助理，定时提醒我喝水，cron是UNIX世界的贴心管家，他总是准时按你的吩咐做事情。MAC下cron当然存在，但是没有了dbus notification，我们的管家叫哪位下人来通知我喝水呢？答案是growl.</p>
@@ -337,9 +346,9 @@ sudo make install<br />
   
   <entry>
     <title type="html"><![CDATA[换个GTD－wunderlist试用]]></title>
-    <link href="http://www.lovelin.info/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8/"/>
+    <link href="http://assassingj.github.com/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8/"/>
     <updated>2012-03-29T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8</id>
+    <id>http://assassingj.github.com/blog/2012/03/29/e68da2e4b8aagtdefbc8dwunderliste8af95e794a8</id>
     <content type="html"><![CDATA[<p><div style="font-size: 16px;">对于我这种做事拖拉，并且无数想法间隙性从脑中涌现的人来说，GTD和笔记软件是不能少的。GTD一直以来都用着things,但是始终没找到android下的客户端，今天终于感觉到不爽了。比较N久，终于决定下个<a href="http://www.wunderlist.com/" title="wunderlist" target="_blank">wunderlist</a>来试用一下。</div>
 <div style="font-size: 16px;"></div>
 <div style="font-size: 16px;">选中wunderlist有如下原因：</div>
@@ -360,9 +369,9 @@ sudo make install<br />
   
   <entry>
     <title type="html"><![CDATA[又一位友人离去]]></title>
-    <link href="http://www.lovelin.info/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb/"/>
+    <link href="http://assassingj.github.com/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb/"/>
     <updated>2012-03-27T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb</id>
+    <id>http://assassingj.github.com/blog/2012/03/27/e58f88e4b880e4bd8de58f8be4babae7a6bbe58ebb</id>
     <content type="html"><![CDATA[<p><p> </p>
 <div style="font-size: 17px; font-family: 'Heiti SC';"><span style="font-family: Arial;">想起之前EDM的日子，你常常说要有颗大心脏，想不到你自己却倒在了阿喀琉斯之踵下。</span></div>
 <div style="font-size: 17px; font-family: 'Heiti SC';"><span style="font-family: Arial;"><br /></span></div>
@@ -386,9 +395,9 @@ sudo make install<br />
   
   <entry>
     <title type="html"><![CDATA[分析日志获取任务运行时长]]></title>
-    <link href="http://www.lovelin.info/blog/2012/03/24/e58886e69e90e697a5e5bf97e88eb7e58f96e4bbbbe58aa1e8bf90e8a18ce697b6e995bf/"/>
+    <link href="http://assassingj.github.com/blog/2012/03/24/e58886e69e90e697a5e5bf97e88eb7e58f96e4bbbbe58aa1e8bf90e8a18ce697b6e995bf/"/>
     <updated>2012-03-24T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/03/24/e58886e69e90e697a5e5bf97e88eb7e58f96e4bbbbe58aa1e8bf90e8a18ce697b6e995bf</id>
+    <id>http://assassingj.github.com/blog/2012/03/24/e58886e69e90e697a5e5bf97e88eb7e58f96e4bbbbe58aa1e8bf90e8a18ce697b6e995bf</id>
     <content type="html"><![CDATA[<p>最近在做后台计算这块逻辑，所有的计算任务都在后台的线程池中运行。运行完所有任务后，如果统计每个任务的运行时长？所有任务的开始和结束都有打印日志（如下所示），只需要简单解析下日志文件即可。
 <code>cat p4pnmas.log | grep task</code>
 <a href="http://www.lovelin.info/wp-content/uploads/2012/03/Screen-Shot-2012-03-24-at-4.02.11-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2012/03/Screen-Shot-2012-03-24-at-4.02.11-PM.png" alt="" title="Screen Shot 2012-03-24 at 4.02.11 PM" width="795" height="38" class="alignnone size-full wp-image-159" /></a></p>
@@ -497,9 +506,9 @@ printInfo(&#8220;end&#8221;)<br />
   
   <entry>
     <title type="html"><![CDATA[pythonchallenge专题－4]]></title>
-    <link href="http://www.lovelin.info/blog/2012/01/31/pythonchallengee4b893e9a298efbc8d4/"/>
+    <link href="http://assassingj.github.com/blog/2012/01/31/pythonchallengee4b893e9a298efbc8d4/"/>
     <updated>2012-01-31T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/01/31/pythonchallengee4b893e9a298efbc8d4</id>
+    <id>http://assassingj.github.com/blog/2012/01/31/pythonchallengee4b893e9a298efbc8d4</id>
     <content type="html"><![CDATA[<p><p>第4题地址 <a href="http://www.pythonchallenge.com/pc/def/equality.html" title="http://www.pythonchallenge.com/pc/def/equality.html">http://www.pythonchallenge.com/pc/def/equality.html</a></p></p>
 
 <p><p>正如晓兵哥的口头禅所言，这道题中的5支蜡烛“闪瞎了我的一双钛合金狗眼”。<br />
@@ -533,9 +542,9 @@ over.</p>
   
   <entry>
     <title type="html"><![CDATA[pythonchallenge专题－3]]></title>
-    <link href="http://www.lovelin.info/blog/2012/01/05/pythonchallengee4b893e9a298efbc8d3/"/>
+    <link href="http://assassingj.github.com/blog/2012/01/05/pythonchallengee4b893e9a298efbc8d3/"/>
     <updated>2012-01-05T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/01/05/pythonchallengee4b893e9a298efbc8d3</id>
+    <id>http://assassingj.github.com/blog/2012/01/05/pythonchallengee4b893e9a298efbc8d3</id>
     <content type="html"><![CDATA[<p>第3题地址<a href="http://www.pythonchallenge.com/pc/def/ocr.html" title="http://www.pythonchallenge.com/pc/def/ocr.html" target="_blank">http://www.pythonchallenge.com/pc/def/ocr.html</a>。<br />
 不得不说这个URL非常巧妙，上一题是一个字母mapping相关的，URL中带上&#8221;map&#8221;做为题目的主题，&#8221;map&#8221;映射为&#8221;ocr&#8221;做为结果，而这一题看起来是图像识别相关的，所以&#8221;ocr&#8221;则可以成为本题的主题了。</p>
 
@@ -573,9 +582,9 @@ file.close()<br />
   
   <entry>
     <title type="html"><![CDATA[pythonchallenge专题－2]]></title>
-    <link href="http://www.lovelin.info/blog/2012/01/02/pythonchallengee4b893e9a298efbc8d2/"/>
+    <link href="http://assassingj.github.com/blog/2012/01/02/pythonchallengee4b893e9a298efbc8d2/"/>
     <updated>2012-01-02T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/01/02/pythonchallengee4b893e9a298efbc8d2</id>
+    <id>http://assassingj.github.com/blog/2012/01/02/pythonchallengee4b893e9a298efbc8d2</id>
     <content type="html"><![CDATA[<p>第2题地址<a href="http://www.pythonchallenge.com/pc/def/map.html" title="http://www.pythonchallenge.com/pc/def/map.html" target="_blank">http://www.pythonchallenge.com/pc/def/map.html</a></p>
 
 <p>根据图片提示，可以判断这是一个简单的解密算法，将每个字母mapping到它的ascii值加2代表的字母就可以了。<br />
@@ -622,9 +631,9 @@ print string.translate(str, table)<br />
   
   <entry>
     <title type="html"><![CDATA[pythonchallenge专题－1]]></title>
-    <link href="http://www.lovelin.info/blog/2012/01/01/pythonchallengee4b893e9a298efbc8d1/"/>
+    <link href="http://assassingj.github.com/blog/2012/01/01/pythonchallengee4b893e9a298efbc8d1/"/>
     <updated>2012-01-01T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/01/01/pythonchallengee4b893e9a298efbc8d1</id>
+    <id>http://assassingj.github.com/blog/2012/01/01/pythonchallengee4b893e9a298efbc8d1</id>
     <content type="html"><![CDATA[<p><a href="http://www.pythonchallenge.com/" title="pythonchallenge" target="_blank">pythonchallenge</a>听过很多次，今天决定开始试试.</p>
 
 <p>打开<a href="http://www.pythonchallenge.com" title="www.pythonchallenge.com" target="_blank">www.pythonchallenge.com</a>，引导进入第一题。<br />
@@ -645,9 +654,9 @@ print 2 << 37<br />
   
   <entry>
     <title type="html"><![CDATA[在mac上安装mtr]]></title>
-    <link href="http://www.lovelin.info/blog/2011/12/31/e59ca8mace4b88ae5ae89e8a385mtr/"/>
+    <link href="http://assassingj.github.com/blog/2011/12/31/e59ca8mace4b88ae5ae89e8a385mtr/"/>
     <updated>2011-12-31T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2011/12/31/e59ca8mace4b88ae5ae89e8a385mtr</id>
+    <id>http://assassingj.github.com/blog/2011/12/31/e59ca8mace4b88ae5ae89e8a385mtr</id>
     <content type="html"><![CDATA[<p>不得不说MAC下某些命令与常见的linux发行版中的命令大不一样。ps, sed 我忍很久了。</p>
 
 <p>这次又发现没有<a href="http://www.bitwizard.nl/mtr/" title="mtr">mtr</a>工具，还好装了brew，于是
@@ -693,9 +702,9 @@ export LIBS=&#8217;-lm -ltermcap -lresolv&#8217;<br />
   
   <entry>
     <title type="html"><![CDATA[又一个AI网站]]></title>
-    <link href="http://www.lovelin.info/blog/2011/12/29/e58f88e4b880e4b8aaaie7bd91e7ab99/"/>
+    <link href="http://assassingj.github.com/blog/2011/12/29/e58f88e4b880e4b8aaaie7bd91e7ab99/"/>
     <updated>2011-12-29T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2011/12/29/e58f88e4b880e4b8aaaie7bd91e7ab99</id>
+    <id>http://assassingj.github.com/blog/2011/12/29/e58f88e4b880e4b8aaaie7bd91e7ab99</id>
     <content type="html"><![CDATA[<p><a href="http://www.wolframalpha.com/" title="http://www.wolframalpha.com/">http://www.wolframalpha.com/</a></p>
 
 <p>我试着问了几个问题<br />
@@ -715,9 +724,9 @@ answer:
   
   <entry>
     <title type="html"><![CDATA[程序员能力矩阵]]></title>
-    <link href="http://www.lovelin.info/blog/2011/12/27/e7a88be5ba8fe59198e883bde58a9be79fa9e998b5/"/>
+    <link href="http://assassingj.github.com/blog/2011/12/27/e7a88be5ba8fe59198e883bde58a9be79fa9e998b5/"/>
     <updated>2011-12-27T00:00:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2011/12/27/e7a88be5ba8fe59198e883bde58a9be79fa9e998b5</id>
+    <id>http://assassingj.github.com/blog/2011/12/27/e7a88be5ba8fe59198e883bde58a9be79fa9e998b5</id>
     <content type="html"><![CDATA[<p>看了下，大部分总结得不错</p>
 
 <p><a href="http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm" title="点这里" target="_blank">programmer competency matrix</a></p>

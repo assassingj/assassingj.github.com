@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: unix | 黑皮窝]]></title>
-  <link href="http://www.lovelin.info/blog/categories/unix/atom.xml" rel="self"/>
-  <link href="http://www.lovelin.info/"/>
-  <updated>2013-04-11T22:05:31+08:00</updated>
-  <id>http://www.lovelin.info/</id>
+  <link href="http://assassingj.github.com/blog/categories/unix/atom.xml" rel="self"/>
+  <link href="http://assassingj.github.com/"/>
+  <updated>2013-04-11T22:11:47+08:00</updated>
+  <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[tmux使用心得小记]]></title>
-    <link href="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
+    <link href="http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
     <updated>2012-10-25T13:55:00+08:00</updated>
-    <id>http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
+    <id>http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
     <content type="html"><![CDATA[<h2>前言</h2>
 
 <p>有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性:</p>
