@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>tmux使用心得小记 - 黑皮窝</title>
+  <meta name="author" content="gaojian">
+
+  
+  <meta name="description" content="前言 有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性: 1.mac下没有terminator,虽然有iterm之类替代,但非吾所愿,我要的是通用解决方案
+2.和X做了绑定, 纯命令行下无法使用terminator &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="黑皮窝" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28775026-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">黑皮窝</a></h1>
+  
+    <h2>technology, tips</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.lovelin.info" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tmux使用心得小记</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T13:55:00+08:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>前言</h2>
+
+<p>有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性:</p>
+
+<pre><code>1.mac下没有terminator,虽然有iterm之类替代,但非吾所愿,我要的是通用解决方案
+2.和X做了绑定, 纯命令行下无法使用terminator
+</code></pre>
+
+<p>tmux与GNU screen类似,但是来自openbsd, 使用它最直接的用处是可以切屏,当然好处远不止于此.下面是tmux的一些feature:</p>
+
+<ul>
+<li>A powerful, consistent, well-documented and easily scriptable command interface.</li>
+<li>A window may be split horizontally and vertically into panes.</li>
+<li>Panes can be freely moved and resized, or arranged into preset layouts.</li>
+<li>Support for UTF-8 and 256-colour terminals.</li>
+<li>Copy and paste with multiple buffers.</li>
+<li>Interactive menus to select windows, sessions or clients.</li>
+<li>Change the current window by searching for text in the target.</li>
+<li>Terminal locking, manually or after a timeout.</li>
+<li>A clean, easily extended, BSD-licensed codebase, under active development.</li>
+</ul>
+
+
+<h2>安装</h2>
+
+<p>tmux的安装非常简单,ubuntu下 <br/>
+<code>sudo aptitude install tmux</code><br/>
+mac下ports或者brew都可以直接install,以brew为例<br/>
+<code>sudo brew install tmux</code> <br/>
+想自己编译可以从<a href="http://tmux.sourceforge.net/" title="tmux web">官网</a> download源码</p>
+
+<h2>基本用法</h2>
+
+<p>最好的办法man,openbsd上也提供了一份<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=tmux&amp;sektion=1" title="manual page">手册</a>
+开启一个终端, 输入tmux命令. 基本上所有的操作都需要先按下prefix键(默认是ctrl+b),
+比如<br/>
+1. 水平分割一个pane,先ctrl+b,再双引号<br/>
+2. 垂直分割一个pane,先ctrl+b, 再百分号<br/>
+3. 脱离当前会话,ctrl+b后 d, 此处的脱离是暂时离开,实际当前所有的工作场景都是保留的,并且在后台持续运行,后续可以通过tmux attach重新接入进来,有点nohup的感觉,所以你可以今天SSH上某台服务器,开个tmux,跑某个任务,然后注销这次SSH,明天再SSH上来attach上次的会话,看看任务是否跑完</p>
+
+<p>不习惯看英文的同学<a href="https://wiki.freebsdchina.org/software/t/tmux">此处</a>有一些基本的中文操作手册</p>
+
+<h2>个性化折腾</h2>
+
+<p>生命不息,折腾不止.自己定制的才是最适合自己的,如此强大的工具要慢慢挖掘
+1. 改prefix键, ctrl+b没手感,改为ctrl+h
+修改~/.tmux.conf(如果没有则新建一个),新增如下内容:<br/>
+<code>
+set -g prefix C-h
+unbind-key C-b
+</code></p>
+
+<ol>
+<li><p>启动shell时自动进入tmux, 如果没有会话则新建一个,有则直接attach
+在.zshrc(bash用户可能是.bashrc)的最后加入tmux就直接启动了,但要做些逻辑判断
+最后的脚本如下:<br/>
+<code>
+test -z "$TMUX" &amp;&amp; (tmux attach || tmux new-session)
+</code></p></li>
+<li><p>定制状态栏, 想在状态栏上加点自己随时感兴趣的东西
+因为是动态IP,平常时不时会要ifconfig一下,于是将IP固定显示在状态栏左边<br/>
+<code>
+set -g status-left-ength 21
+set -g status-left "#[bg=green,fg=white,bold]#(ifconfig | grep -A1 eth0 | tail -1 | awk '{print $2}' | awk -F: '{print $2}')"
+</code>
+开发的机器经常高load,可以将load放到状态栏右边,成天对着黑白terminal,怕忘记时间再在状态栏加上时间显示(一分钟refresh一次)<br/>
+<code>
+set -g status-right "#[bg=green,fg=white,bold]#(cut -d ' ' -f 1-3 /proc/loadavg) ● #[bg=green,fg=white,bold]#(date +%H:%M)"
+set -g status-interval 60
+</code>
+(其实在tmux中, 按下prefix键后 加t 会有个全屏的时钟出来)</p></li>
+<li><p>启动时初始化窗口
+想骚包吗？想假装高手吗，想打开tmux就自动就分N个窗口吗？
+在shell启动脚本中加入这些(替换之前的自启动脚本)</p></li>
+</ol>
+
+
+<script src="https://gist.github.com/4058032.js?file=tmux-init.sh"></script>
+
+
+<p>使用以上脚本会开两个window，并把第2个window分割成3份，最上面跑着htop,左边有个vim，右边一个dstat，效果如下图 <br/>
+<a href="http://www.flickr.com/photos/85525219@N04/8178078344/" title="all by 爱琳说, on Flickr"><img src="http://farm9.staticflickr.com/8488/8178078344_8c8ce9f1a5.jpg" width="500" height="313" alt="all"></a> <br/>
+具体需要启动什么，启动几个窗口，分割分几个pane, 都可以修改脚本定制</p>
+
+<ol>
+<li>多pane同步
+连了好几台服务器，想同时执行相同的命令，同时观察结果吗？在按下prefix键后按冒号进入command模式
+输入 <br/>
+<code>
+setw synchronize-panes
+</code> <br/>
+你输入的命令将在所有pane中出现执行 <br/>
+<a href="http://www.flickr.com/photos/85525219@N04/8178095816/" title="syn-pane by 爱琳说, on Flickr"><img src="http://farm9.staticflickr.com/8486/8178095816_1841eca896.jpg" width="500" height="313" alt="syn-pane"></a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">gaojian</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T13:55:00+08:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/technology/'>technology</a>, <a class='category' href='/blog/categories/unix/'>unix</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/" data-via="" data-counturl="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/" title="Previous Post: 实现ip地址自动上传过程分析">&laquo; 实现ip地址自动上传过程分析</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/" title="Next Post: shell版的下妹子图">shell版的下妹子图 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">golang写个简单的cmus歌词插件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/17/ci-qu-jing-nian/">此去经年</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/">shell版的下妹子图</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">tmux使用心得小记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/">实现ip地址自动上传过程分析</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (18)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li><li><a href='/blog/categories/unix'>unix (1)</a></li></ul>
+</section>
+
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - gaojian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'assassingj'; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+ var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+ dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

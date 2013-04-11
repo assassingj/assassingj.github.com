@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>破VPN引发的网络问题 - 黑皮窝</title>
+  <meta name="author" content="gaojian">
+
+  
+  <meta name="description" content="上个周末在家用VPN连上公司网络来写项目周报，公司的VPN系统会根据浏览器和操作系统来使用不同的VPN client. 很遗憾 mac下居然用的是一个applet，千辛万苦装上后能用了，中途出现CPU飙高的情况，我忍了，发完周报就把APPLET所在的网页关掉了，噩梦来了。
+ 
+上外网不能用了， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.lovelin.info/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="黑皮窝" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28775026-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">黑皮窝</a></h1>
+  
+    <h2>technology, tips</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.lovelin.info" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">破VPN引发的网络问题</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-26T00:00:00+08:00" pubdate data-updated="true">May 26<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><p>上个周末在家用VPN连上公司网络来写项目周报，公司的VPN系统会根据浏览器和操作系统来使用不同的VPN client. 很遗憾 mac下居然用的是一个applet，千辛万苦装上后能用了，中途出现CPU飙高的情况，我忍了，发完周报就把APPLET所在的网页关掉了，噩梦来了。</p>
+<p> </p>
+<p>上外网不能用了，ifconfig下出现两个VNIC的虚拟网卡且status为active。</p>
+<p><img title="Screen Shot 2012-05-26 at 10.47.14 AM.png" src="http://www.lovelin.info/wp-content/uploads/2012/05/Screen-Shot-2012-05-26-at-10.47.14-AM.png" alt="Screen Shot 2012 05 26 at 10 47 14 AM" width="557" height="312" border="0" /></p>
+<p>mtr 所有的外网域名都不通，只能ping 通自己的路由器192.168.1.1, 打印route table如下：</p>
+<p><img title="Screen Shot 2012-05-26 at 10.13.18 AM.png" src="http://www.lovelin.info/wp-content/uploads/2012/05/Screen-Shot-2012-05-26-at-10.13.18-AM.png" alt="Screen Shot 2012 05 26 at 10 13 18 AM" width="600" height="248" border="0" /></p>
+<p>按道理应该能ping通才对，换了个IPping了下，果然通了，断定为DNS解析的问题</p>
+<p>打开网络设置，果然看到了DNS server被换成了公司的几个内网IP，于是加上一条192.168.1.1并置顶，OK了</p>
+<p><img title="dns.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/05/dns.jpg" alt="Dns" width="600" height="508" border="0" /></p>
+<p>顺便鄙视下arraynetworks的mac VPN client</p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">gaojian</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-26T00:00:00+08:00" pubdate data-updated="true">May 26<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/technology/'>technology</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.lovelin.info/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298/" data-via="" data-counturl="http://www.lovelin.info/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89/" title="Previous Post: 那七年，我们一起（    ）">&laquo; 那七年，我们一起（    ）</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/" title="Next Post: mac升级至10.8后mail rss的转移">mac升级至10.8后mail rss的转移 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">golang写个简单的cmus歌词插件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/17/ci-qu-jing-nian/">此去经年</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/">shell版的下妹子图</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">tmux使用心得小记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/">实现ip地址自动上传过程分析</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (18)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li><li><a href='/blog/categories/unix'>unix (1)</a></li></ul>
+</section>
+
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - gaojian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'assassingj'; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+ var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+ dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

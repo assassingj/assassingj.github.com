@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: technology | 黑皮窝]]></title>
+  <link href="http://www.lovelin.info/blog/categories/technology/atom.xml" rel="self"/>
+  <link href="http://www.lovelin.info/"/>
+  <updated>2013-04-11T22:05:31+08:00</updated>
+  <id>http://www.lovelin.info/</id>
+  <author>
+    <name><![CDATA[gaojian]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[golang写个简单的cmus歌词插件]]></title>
+    <link href="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
+    <updated>2013-04-11T21:53:00+08:00</updated>
+    <id>http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
+    <content type="html"><![CDATA[<p>一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
+目前已实现：
+1. 检测cmus运行状态
+2. 获取cmus当时正在play的歌曲meta信息
+3. 根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API
+4. 打印第一匹配的歌词</p>
+
+<p>待实现:
+1. 终端下的termbox
+2. 同一首歌的cache
+3. 自主search 选择歌词
+4. ...</p>
+
+<script src="https://gist.github.com/assassingj/5363551.js"></script>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[shell版的下妹子图]]></title>
+    <link href="http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu/"/>
+    <updated>2013-01-22T00:43:00+08:00</updated>
+    <id>http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu</id>
+    <content type="html"><![CDATA[<p>在osc上看到一篇python写的<a href="http://www.oschina.net/code/snippet_13769_17481" title="下妹子图">下妹子图</a>,试着改为一句shell,效果很不错:
+<code>
+for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/null| grep 'img src=.*.jpg.*' | sed 's/.*img src="(.*.jpg).*$/\1/' | xargs wget --timeout=5; done
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[tmux使用心得小记]]></title>
+    <link href="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
+    <updated>2012-10-25T13:55:00+08:00</updated>
+    <id>http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
+    <content type="html"><![CDATA[<h2>前言</h2>
+
+<p>有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性:</p>
+
+<pre><code>1.mac下没有terminator,虽然有iterm之类替代,但非吾所愿,我要的是通用解决方案
+2.和X做了绑定, 纯命令行下无法使用terminator
+</code></pre>
+
+<p>tmux与GNU screen类似,但是来自openbsd, 使用它最直接的用处是可以切屏,当然好处远不止于此.下面是tmux的一些feature:</p>
+
+<ul>
+<li>A powerful, consistent, well-documented and easily scriptable command interface.</li>
+<li>A window may be split horizontally and vertically into panes.</li>
+<li>Panes can be freely moved and resized, or arranged into preset layouts.</li>
+<li>Support for UTF-8 and 256-colour terminals.</li>
+<li>Copy and paste with multiple buffers.</li>
+<li>Interactive menus to select windows, sessions or clients.</li>
+<li>Change the current window by searching for text in the target.</li>
+<li>Terminal locking, manually or after a timeout.</li>
+<li>A clean, easily extended, BSD-licensed codebase, under active development.</li>
+</ul>
+
+
+<h2>安装</h2>
+
+<p>tmux的安装非常简单,ubuntu下 <br/>
+<code>sudo aptitude install tmux</code><br/>
+mac下ports或者brew都可以直接install,以brew为例<br/>
+<code>sudo brew install tmux</code> <br/>
+想自己编译可以从<a href="http://tmux.sourceforge.net/" title="tmux web">官网</a> download源码</p>
+
+<h2>基本用法</h2>
+
+<p>最好的办法man,openbsd上也提供了一份<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=tmux&amp;sektion=1" title="manual page">手册</a>
+开启一个终端, 输入tmux命令. 基本上所有的操作都需要先按下prefix键(默认是ctrl+b),
+比如<br/>
+1. 水平分割一个pane,先ctrl+b,再双引号<br/>
+2. 垂直分割一个pane,先ctrl+b, 再百分号<br/>
+3. 脱离当前会话,ctrl+b后 d, 此处的脱离是暂时离开,实际当前所有的工作场景都是保留的,并且在后台持续运行,后续可以通过tmux attach重新接入进来,有点nohup的感觉,所以你可以今天SSH上某台服务器,开个tmux,跑某个任务,然后注销这次SSH,明天再SSH上来attach上次的会话,看看任务是否跑完</p>
+
+<p>不习惯看英文的同学<a href="https://wiki.freebsdchina.org/software/t/tmux">此处</a>有一些基本的中文操作手册</p>
+
+<h2>个性化折腾</h2>
+
+<p>生命不息,折腾不止.自己定制的才是最适合自己的,如此强大的工具要慢慢挖掘
+1. 改prefix键, ctrl+b没手感,改为ctrl+h
+修改~/.tmux.conf(如果没有则新建一个),新增如下内容:<br/>
+<code>
+set -g prefix C-h
+unbind-key C-b
+</code></p>
+
+<ol>
+<li><p>启动shell时自动进入tmux, 如果没有会话则新建一个,有则直接attach
+在.zshrc(bash用户可能是.bashrc)的最后加入tmux就直接启动了,但要做些逻辑判断
+最后的脚本如下:<br/>
+<code>
+test -z "$TMUX" &amp;&amp; (tmux attach || tmux new-session)
+</code></p></li>
+<li><p>定制状态栏, 想在状态栏上加点自己随时感兴趣的东西
+因为是动态IP,平常时不时会要ifconfig一下,于是将IP固定显示在状态栏左边<br/>
+<code>
+set -g status-left-ength 21
+set -g status-left "#[bg=green,fg=white,bold]#(ifconfig | grep -A1 eth0 | tail -1 | awk '{print $2}' | awk -F: '{print $2}')"
+</code>
+开发的机器经常高load,可以将load放到状态栏右边,成天对着黑白terminal,怕忘记时间再在状态栏加上时间显示(一分钟refresh一次)<br/>
+<code>
+set -g status-right "#[bg=green,fg=white,bold]#(cut -d ' ' -f 1-3 /proc/loadavg) ● #[bg=green,fg=white,bold]#(date +%H:%M)"
+set -g status-interval 60
+</code>
+(其实在tmux中, 按下prefix键后 加t 会有个全屏的时钟出来)</p></li>
+<li><p>启动时初始化窗口
+想骚包吗？想假装高手吗，想打开tmux就自动就分N个窗口吗？
+在shell启动脚本中加入这些(替换之前的自启动脚本)</p></li>
+</ol>
+
+
+<script src="https://gist.github.com/4058032.js?file=tmux-init.sh"></script>
+
+
+<p>使用以上脚本会开两个window，并把第2个window分割成3份，最上面跑着htop,左边有个vim，右边一个dstat，效果如下图 <br/>
+<a href="http://www.flickr.com/photos/85525219@N04/8178078344/" title="all by 爱琳说, on Flickr"><img src="http://farm9.staticflickr.com/8488/8178078344_8c8ce9f1a5.jpg" width="500" height="313" alt="all"></a> <br/>
+具体需要启动什么，启动几个窗口，分割分几个pane, 都可以修改脚本定制</p>
+
+<ol>
+<li>多pane同步
+连了好几台服务器，想同时执行相同的命令，同时观察结果吗？在按下prefix键后按冒号进入command模式
+输入 <br/>
+<code>
+setw synchronize-panes
+</code> <br/>
+你输入的命令将在所有pane中出现执行 <br/>
+<a href="http://www.flickr.com/photos/85525219@N04/8178095816/" title="syn-pane by 爱琳说, on Flickr"><img src="http://farm9.staticflickr.com/8486/8178095816_1841eca896.jpg" width="500" height="313" alt="syn-pane"></a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[实现ip地址自动上传过程分析]]></title>
+    <link href="http://www.lovelin.info/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/"/>
+    <updated>2012-10-22T00:00:00+08:00</updated>
+    <id>http://www.lovelin.info/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90</id>
+    <content type="html"><![CDATA[<p><p>不像大学那会，想买台赛扬CPU没独显也无所谓的台式机的小小愿望都无法实现，工作了的同学很多时候有好几台电脑。公司一台，家里一台，或者公司台式机一台，笔记本一台。如果想从A电脑SSH到B电脑，而B电脑又是DHCP的居无定所（没有固定IP），那么就需要B自己告诉我们IP地址。</p>
+<p>要达成目标我们需要做三件事情：</p>
+<ol>
+<li>在某些时刻B电脑找出本机IP地址</li>
+<li>.upload这一IP到一个公共空间</li>
+<li>A电脑获取这一IP</li>
+</ol>
+<h3>分析</h3>
+<p>第1点，在linux上找出本机IP方法是很多的，在ifconfig后用grep, cut, awk, sed等处理下就好，关键在于何时运行呢？有两种方法：一种是借助cron工具定时去执行,一种是在网络环境发生变化时触发执行，有点像select与epoll的区别。如果以去银行排队办业务为例来说，前者就像是每2分钟去柜台问下可不可以为我办了，后者则是在大厅经理那拿一个注册号码，轮到你了就广播叫你,显然后者的机制会有效率且实时.</p>
+<p>ubuntu下可借助/etc/network/if-up.d这个文件夹, 在网络接口起来后会执行该文件夹下面所有可执行的脚本（与/etc/rcx.d类似,不过触发时间点一个是在系统启动时一个是在网络接口准备好时），所以我们可以将采集IP的脚本扔到这个文件夹下，这样当网络有变化时会自动执行了</p>
+<p>mac下稍微麻烦点, 先借助scutil看看我们关心的网络变化这个点在系统中是如何注册的,我关心的是ipv4的变化(也可以是你关心的具体某个网络接口的state (如: subKey [54] = State:/Network/Interface/en1/IPv4)</p>
+<p><a title="View 'scutil2' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112241063"><img title="scutil2" src="http://farm9.staticflickr.com/8333/8112241063_895c69c804.jpg" alt="scutil2" width="500" height="223" border="0" /></a></p>
+<p>当我们的网络接口发生变化时,就可以根据这个key来监控了(如下为停止无线和启用无线触发的)</p>
+<p><a title="View 'watch' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112258368"><img title="watch" src="http://farm9.staticflickr.com/8050/8112258368_1d9c3d882e.jpg" alt="watch" width="500" height="149" border="0" /></a></p>
+<p>要做到全自动,可以借助python+SystemConfiguration,脚本如下(获取IP部分可自由修改,甚至用shell等其他方式实现,我们需要的只是trigger这个动作)
+<script src="https://gist.github.com/3931024.js?file=network.py"></script>
+</p>
+<p>第2点，可选的很多. ftp, 个人空间, github等等</p>
+<p>以github为例,可以将新的IP push到repository中,这样其他需要查看该IP的机器pull一下就可以获得最新的IP</p></p>
+
+
+
+
+<p><p>第3点 简单的办法就是轮询了,还是以github为例,定时pull最新的版本下来就OK了,不过会有一定的延时(你不会配置一个cron 每秒扫描一次网络吧??), 能想到的实时的方案就是借助自己的VPS, 以VPS为中介服务器,A电脑通过socket到VPS上, B电脑在获取到新的IP后将IP推送到VPS上(可以开socket,也可以直接rsync,由VPS的inotify-tools监控文件变化),VPS服务器收到新IP后发送IP给A电脑, 并触发事件(借助这个事件我们可以做一些更新的动作,比如A电脑绑定了hosts文件的可以重写hosts文件)</p></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mac升级至10.8后mail rss的转移]]></title>
+    <link href="http://www.lovelin.info/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/"/>
+    <updated>2012-10-08T00:00:00+08:00</updated>
+    <id>http://www.lovelin.info/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb</id>
+    <content type="html"><![CDATA[<p><p>升级至mountain lion后，猛的发现原来mail中订阅的rss全部不翼而飞，查阅资料后才知道新版mail不再支持rss了，所以需要将原来订阅好的rss转移下，这次下定决心全部挪到google reader中去，再用chrome plugin或者其他客户端来看，这样以后都不用担心丢失。</p>
+<p>做成这件事情需要两步：</p>
+<p>   1.找到我之前订阅的rss feed 列表</p>
+<p>   2.把列表中的feed全部subscribe到google reader中</p>
+<p>如果只是想找出feed列表是相当简单的，试过几次后发现，运行如下command就可以了：</p>
+<p><code>find ~/Library/Mail/V2/RSS/ -name "Info.plist" |xargs -I{}  grep -A 1 Feed {} | grep string | awk -F'[&lt;&gt;]' '{print $3}'</code></p>
+<p><a title="View 'rsslist' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066566462"><img title="rsslist" src="http://farm9.staticflickr.com/8031/8066566462_55ace23441.jpg" alt="rsslist" width="500" height="408" border="0" /></a></p>
+<p>如果需要将其自动import到google reader中，还需要用reader提供的api干点额外的活，我参考的api接口如下：</p>
+<p><a href="http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_%E4%BB%8B%E7%BB%8D">http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_介绍</a></p>
+<p>要订阅feed，需要如下几步:</p>
+<ul>
+<li>获取google auth</li>
+<li>获取token</li>
+<li>订阅指定的feed</li>
+</ul>
+<p>连带之前的找feed列表的功能，脚本如下
+<script src="https://gist.github.com/3863977.js?file=rssmail2reader.py"></script></p>
+
+<p>完整版(其实就是加上README)放在 <a href="https://github.com/assassingj/mailrss2google">https://github.com/assassingj/mailrss2google</a>中</p>
+<p>执行
+<code>python rsstranfer.py peng.gaojian@gmail.com</code>输入密码就OK了<br />
+完成后再访问google reader,之前的订阅全回来了～<a title="View 'google reader' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066506348"><img title="google reader" src="http://farm9.staticflickr.com/8179/8066506348_f9003e9d5e.jpg" alt="google reader" width="500" height="203" border="0" /></a></p>
+<p> </p></p>
+
+]]></content>
+  </entry>
+  
+</feed>
