@@ -9,10 +9,7 @@
   <meta name="author" content="gaojian">
 
   
-  <meta name="description" content="一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
-目前已实现： 检测cmus运行状态
-获取cmus当时正在play的歌曲meta信息
-根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API &hellip;">
+  <meta name="description" content="之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed&#8230; 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景.. 开始我用iterm2新建了一套profile, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +76,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">Tmux 下无法自定义encoding的解决方案</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-16T10:56:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed&#8230; 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景..</p>
+
+<p>开始我用iterm2新建了一套profile,初始化时指定character encoding为gb2312,可以满足需求，昨天将其改为luit了,这样不用新开tab</p>
+
+<p>实施<a href="http://invisible-island.net/luit/">luit</a>非常简单，唯一需要注意的是mac lion下可能会出现</p>
+
+<blockquote><p>couldn&#8217;t copy terminal setting</p></blockquote>
+
+<p>这样的error, 我download了luit的最新源码，自己compile出来是没这个问题的,在.zshrc中加入alias
+<code></p>
+
+<pre><code>alias ssh2server='luit -encoding gbk ssh xxx@shterm.xxx.net'
+</code></pre>
+
+<p></code></p>
+
+<p>以后上线上服务器直接ssh2server吧。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -643,64 +694,6 @@ setw synchronize-panes
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/">健康很重要－cron+growl来提醒我喝水</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-06T00:00:00+08:00" pubdate data-updated="true">Apr 6<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><h1 style="font-size: 14px;">背景</h1>
-<p style="font-size: 14px;"><span style="font-size: 15px;">身为一名programmer，沉浸在自己的代码世界忽略其他是常有的事情。“山中无甲子,寒尽不知年”，猛一回头一个下午又过去了，今天又忘记喝水了，脸色又黄又油，小名都快由黑皮改为黄皮了，晚上回家被狠P了几句。</span></p>
-<p style="font-size: 14px;">我需要一个助理，定时提醒我喝水，cron是UNIX世界的贴心管家，他总是准时按你的吩咐做事情。MAC下cron当然存在，但是没有了dbus notification，我们的管家叫哪位下人来通知我喝水呢？答案是growl.</p>
-<h1 style="font-size: 14px;"></h1>
-<h1 style="font-size: 14px;">执行</h1>
-<p><span style="font-size: 15px;">我本机的growl的version是1.3.3，是自己download了源码compile出来的。默认安装时是没有装上growl notify工具的，所以第一步是准备好我们的growl notify.进入growl源码目录，growlnotify工具在 源码目录/Extras/growlnotify目录下，果断执行：</span></p>
-[cc lang=&#8221;python&#8221;]<br />
-make<br />
-sudo make install<br />
-[/cc]
-<p style="font-size: 15px;">接下来再写个cron表达式，与linux下不同，在MAC下我试了好久都无法以crontab -e的方式加入表达式，最后直接编辑/etc/crontab文件，append如下内容</p>
-[cc lang=&#8221;python&#8221;]<br />
-0 10,15 * * * penggaojian /usr/local/bin/growlnotify -t &#8220;喝水啦&#8221; -m &#8220;`date` 到了&#8221; -s<br />
-[/cc]
-<p style="font-size: 15px;">效果就是每天的10点和15点，会pop一个提示窗出来. &#8220;-s&#8221;参数决定了如果我不手工关掉这个提醒，它就和我耗着不自动消失</p>
-<p style="font-size: 15px;">搞定，收工。最终效果如图:</p>
-<p style="font-size: 15px;"><img title="pop.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/04/pop.jpg" border="0" alt="Pop" width="600" height="375" /></p>
-<p style="font-size: 15px;">为什么是10点和15点？这是老婆她五舅这位营养师说的</p>
-<p> </p>
-<p> </p>
-<p> </p></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -714,6 +707,10 @@ sudo make install<br />
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">tmux 下无法自定义encoding的解决方案</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">golang写个简单的cmus歌词插件</a>
@@ -731,15 +728,11 @@ sudo make install<br />
         <a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">tmux使用心得小记</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/">实现ip地址自动上传过程分析</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (18)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li><li><a href='/blog/categories/unix'>unix (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/linux'>linux (1)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (19)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li><li><a href='/blog/categories/unix'>unix (1)</a></li></ul>
 </section>
 
 

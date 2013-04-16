@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: linux | 黑皮窝]]></title>
+  <link href="http://assassingj.github.com/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://assassingj.github.com/"/>
+  <updated>2013-04-16T13:42:51+08:00</updated>
+  <id>http://assassingj.github.com/</id>
+  <author>
+    <name><![CDATA[gaojian]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[tmux 下无法自定义encoding的解决方案]]></title>
+    <link href="http://assassingj.github.com/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/"/>
+    <updated>2013-04-16T10:56:00+08:00</updated>
+    <id>http://assassingj.github.com/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an</id>
+    <content type="html"><![CDATA[<p>之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed... 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景..</p>
+
+<p>开始我用iterm2新建了一套profile,初始化时指定character encoding为gb2312,可以满足需求，昨天将其改为luit了,这样不用新开tab</p>
+
+<p>实施<a href="http://invisible-island.net/luit/">luit</a>非常简单，唯一需要注意的是mac lion下可能会出现</p>
+
+<blockquote><p>couldn't copy terminal setting</p></blockquote>
+
+<p>这样的error, 我download了luit的最新源码，自己compile出来是没这个问题的,在.zshrc中加入alias
+<code></p>
+
+<pre><code>alias ssh2server='luit -encoding gbk ssh xxx@shterm.xxx.net'
+</code></pre>
+
+<p></code></p>
+
+<p>以后上线上服务器直接ssh2server吧。</p>
+]]></content>
+  </entry>
+  
+</feed>

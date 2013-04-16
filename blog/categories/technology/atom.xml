@@ -4,7 +4,7 @@
   <title><![CDATA[Category: technology | 黑皮窝]]></title>
   <link href="http://assassingj.github.com/blog/categories/technology/atom.xml" rel="self"/>
   <link href="http://assassingj.github.com/"/>
-  <updated>2013-04-11T22:11:47+08:00</updated>
+  <updated>2013-04-16T13:42:51+08:00</updated>
   <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[tmux 下无法自定义encoding的解决方案]]></title>
+    <link href="http://assassingj.github.com/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/"/>
+    <updated>2013-04-16T10:56:00+08:00</updated>
+    <id>http://assassingj.github.com/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an</id>
+    <content type="html"><![CDATA[<p>之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed... 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景..</p>
+
+<p>开始我用iterm2新建了一套profile,初始化时指定character encoding为gb2312,可以满足需求，昨天将其改为luit了,这样不用新开tab</p>
+
+<p>实施<a href="http://invisible-island.net/luit/">luit</a>非常简单，唯一需要注意的是mac lion下可能会出现</p>
+
+<blockquote><p>couldn't copy terminal setting</p></blockquote>
+
+<p>这样的error, 我download了luit的最新源码，自己compile出来是没这个问题的,在.zshrc中加入alias
+<code></p>
+
+<pre><code>alias ssh2server='luit -encoding gbk ssh xxx@shterm.xxx.net'
+</code></pre>
+
+<p></code></p>
+
+<p>以后上线上服务器直接ssh2server吧。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[golang写个简单的cmus歌词插件]]></title>
@@ -191,38 +216,6 @@ setw synchronize-panes
 
 
 <p><p>第3点 简单的办法就是轮询了,还是以github为例,定时pull最新的版本下来就OK了,不过会有一定的延时(你不会配置一个cron 每秒扫描一次网络吧??), 能想到的实时的方案就是借助自己的VPS, 以VPS为中介服务器,A电脑通过socket到VPS上, B电脑在获取到新的IP后将IP推送到VPS上(可以开socket,也可以直接rsync,由VPS的inotify-tools监控文件变化),VPS服务器收到新IP后发送IP给A电脑, 并触发事件(借助这个事件我们可以做一些更新的动作,比如A电脑绑定了hosts文件的可以重写hosts文件)</p></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mac升级至10.8后mail rss的转移]]></title>
-    <link href="http://assassingj.github.com/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/"/>
-    <updated>2012-10-08T00:00:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb</id>
-    <content type="html"><![CDATA[<p><p>升级至mountain lion后，猛的发现原来mail中订阅的rss全部不翼而飞，查阅资料后才知道新版mail不再支持rss了，所以需要将原来订阅好的rss转移下，这次下定决心全部挪到google reader中去，再用chrome plugin或者其他客户端来看，这样以后都不用担心丢失。</p>
-<p>做成这件事情需要两步：</p>
-<p>   1.找到我之前订阅的rss feed 列表</p>
-<p>   2.把列表中的feed全部subscribe到google reader中</p>
-<p>如果只是想找出feed列表是相当简单的，试过几次后发现，运行如下command就可以了：</p>
-<p><code>find ~/Library/Mail/V2/RSS/ -name "Info.plist" |xargs -I{}  grep -A 1 Feed {} | grep string | awk -F'[&lt;&gt;]' '{print $3}'</code></p>
-<p><a title="View 'rsslist' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066566462"><img title="rsslist" src="http://farm9.staticflickr.com/8031/8066566462_55ace23441.jpg" alt="rsslist" width="500" height="408" border="0" /></a></p>
-<p>如果需要将其自动import到google reader中，还需要用reader提供的api干点额外的活，我参考的api接口如下：</p>
-<p><a href="http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_%E4%BB%8B%E7%BB%8D">http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_介绍</a></p>
-<p>要订阅feed，需要如下几步:</p>
-<ul>
-<li>获取google auth</li>
-<li>获取token</li>
-<li>订阅指定的feed</li>
-</ul>
-<p>连带之前的找feed列表的功能，脚本如下
-<script src="https://gist.github.com/3863977.js?file=rssmail2reader.py"></script></p>
-
-<p>完整版(其实就是加上README)放在 <a href="https://github.com/assassingj/mailrss2google">https://github.com/assassingj/mailrss2google</a>中</p>
-<p>执行
-<code>python rsstranfer.py peng.gaojian@gmail.com</code>输入密码就OK了<br />
-完成后再访问google reader,之前的订阅全回来了～<a title="View 'google reader' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066506348"><img title="google reader" src="http://farm9.staticflickr.com/8179/8066506348_f9003e9d5e.jpg" alt="google reader" width="500" height="203" border="0" /></a></p>
-<p> </p></p>
 
 ]]></content>
   </entry>

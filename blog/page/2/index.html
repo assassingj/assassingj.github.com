@@ -9,7 +9,9 @@
   <meta name="author" content="gaojian">
 
   
-  <meta name="description" content="对于我这种做事拖拉，并且无数想法间隙性从脑中涌现的人来说，GTD和笔记软件是不能少的。GTD一直以来都用着things,但是始终没找到android下的客户端，今天终于感觉到不爽了。比较N久，终于决定下个wunderlist来试用一下。 选中wunderlist有如下原因： 有android客户端 &hellip;">
+  <meta name="description" content="背景
+身为一名programmer，沉浸在自己的代码世界忽略其他是常有的事情。“山中无甲子,寒尽不知年”，猛一回头一个下午又过去了，今天又忘记喝水了，脸色又黄又油，小名都快由黑皮改为黄皮了，晚上回家被狠P了几句。
+我需要一个助理，定时提醒我喝水，cron是UNIX世界的贴心管家， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +78,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/">健康很重要－cron+growl来提醒我喝水</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-06T00:00:00+08:00" pubdate data-updated="true">Apr 6<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/04/06/e581a5e5bab7e5be88e9878de8a681efbc8dcrongrowle69da5e68f90e98692e68891e5969de6b0b4/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><h1 style="font-size: 14px;">背景</h1>
+<p style="font-size: 14px;"><span style="font-size: 15px;">身为一名programmer，沉浸在自己的代码世界忽略其他是常有的事情。“山中无甲子,寒尽不知年”，猛一回头一个下午又过去了，今天又忘记喝水了，脸色又黄又油，小名都快由黑皮改为黄皮了，晚上回家被狠P了几句。</span></p>
+<p style="font-size: 14px;">我需要一个助理，定时提醒我喝水，cron是UNIX世界的贴心管家，他总是准时按你的吩咐做事情。MAC下cron当然存在，但是没有了dbus notification，我们的管家叫哪位下人来通知我喝水呢？答案是growl.</p>
+<h1 style="font-size: 14px;"></h1>
+<h1 style="font-size: 14px;">执行</h1>
+<p><span style="font-size: 15px;">我本机的growl的version是1.3.3，是自己download了源码compile出来的。默认安装时是没有装上growl notify工具的，所以第一步是准备好我们的growl notify.进入growl源码目录，growlnotify工具在 源码目录/Extras/growlnotify目录下，果断执行：</span></p>
+[cc lang=&#8221;python&#8221;]<br />
+make<br />
+sudo make install<br />
+[/cc]
+<p style="font-size: 15px;">接下来再写个cron表达式，与linux下不同，在MAC下我试了好久都无法以crontab -e的方式加入表达式，最后直接编辑/etc/crontab文件，append如下内容</p>
+[cc lang=&#8221;python&#8221;]<br />
+0 10,15 * * * penggaojian /usr/local/bin/growlnotify -t &#8220;喝水啦&#8221; -m &#8220;`date` 到了&#8221; -s<br />
+[/cc]
+<p style="font-size: 15px;">效果就是每天的10点和15点，会pop一个提示窗出来. &#8220;-s&#8221;参数决定了如果我不手工关掉这个提醒，它就和我耗着不自动消失</p>
+<p style="font-size: 15px;">搞定，收工。最终效果如图:</p>
+<p style="font-size: 15px;"><img title="pop.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/04/pop.jpg" border="0" alt="Pop" width="600" height="375" /></p>
+<p style="font-size: 15px;">为什么是10点和15点？这是老婆她五舅这位营养师说的</p>
+<p> </p>
+<p> </p>
+<p> </p></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -716,46 +776,6 @@ answer:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/27/e7a88be5ba8fe59198e883bde58a9be79fa9e998b5/">程序员能力矩阵</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-27T00:00:00+08:00" pubdate data-updated="true">Dec 27<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/12/27/e7a88be5ba8fe59198e883bde58a9be79fa9e998b5/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>看了下，大部分总结得不错</p>
-
-<p><a href="http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm" title="点这里" target="_blank">programmer competency matrix</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -773,6 +793,10 @@ answer:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">tmux 下无法自定义encoding的解决方案</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">golang写个简单的cmus歌词插件</a>
       </li>
     
@@ -788,15 +812,11 @@ answer:
         <a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">tmux使用心得小记</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/">实现ip地址自动上传过程分析</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (18)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li><li><a href='/blog/categories/unix'>unix (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/linux'>linux (1)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (19)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li><li><a href='/blog/categories/unix'>unix (1)</a></li></ul>
 </section>
 
 
