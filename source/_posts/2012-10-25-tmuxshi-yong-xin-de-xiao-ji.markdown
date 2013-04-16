@@ -5,7 +5,7 @@ date: 2012-10-25 13:55
 comments: true
 categories: 
 - technology
-- unix 
+- linux
 
 
 ---
