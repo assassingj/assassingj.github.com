@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: technology | 黑皮窝]]></title>
-  <link href="http://assassingj.github.com/blog/categories/technology/atom.xml" rel="self"/>
-  <link href="http://assassingj.github.com/"/>
-  <updated>2013-04-16T14:58:54+08:00</updated>
-  <id>http://assassingj.github.com/</id>
+  <link href="http://www.lovelin.info/blog/categories/technology/atom.xml" rel="self"/>
+  <link href="http://www.lovelin.info/"/>
+  <updated>2013-04-16T18:40:28+08:00</updated>
+  <id>http://www.lovelin.info/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[将raspberry pi目录备份到dropbox]]></title>
-    <link href="http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/"/>
+    <link href="http://www.lovelin.info/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/"/>
     <updated>2013-04-16T14:14:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox</id>
+    <id>http://www.lovelin.info/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox</id>
     <content type="html"><![CDATA[<p>上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。</p>
 
 <p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
@@ -55,9 +55,9 @@ sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backu
   
   <entry>
     <title type="html"><![CDATA[tmux 下无法自定义encoding的解决方案]]></title>
-    <link href="http://assassingj.github.com/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/"/>
+    <link href="http://www.lovelin.info/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/"/>
     <updated>2013-04-16T10:56:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an</id>
+    <id>http://www.lovelin.info/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an</id>
     <content type="html"><![CDATA[<p>之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed... 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景..</p>
 
 <p>开始我用iterm2新建了一套profile,初始化时指定character encoding为gb2312,可以满足需求，昨天将其改为luit了,这样不用新开tab</p>
@@ -80,9 +80,9 @@ sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backu
   
   <entry>
     <title type="html"><![CDATA[golang写个简单的cmus歌词插件]]></title>
-    <link href="http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
+    <link href="http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/"/>
     <updated>2013-04-11T21:53:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
+    <id>http://www.lovelin.info/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian</id>
     <content type="html"><![CDATA[<p>一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
 目前已实现：</p>
 
@@ -114,9 +114,9 @@ sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backu
   
   <entry>
     <title type="html"><![CDATA[shell版的下妹子图]]></title>
-    <link href="http://assassingj.github.com/blog/2013/01/22/shellban-de-xia-mei-zi-tu/"/>
+    <link href="http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu/"/>
     <updated>2013-01-22T00:43:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2013/01/22/shellban-de-xia-mei-zi-tu</id>
+    <id>http://www.lovelin.info/blog/2013/01/22/shellban-de-xia-mei-zi-tu</id>
     <content type="html"><![CDATA[<p>在osc上看到一篇python写的<a href="http://www.oschina.net/code/snippet_13769_17481" title="下妹子图">下妹子图</a>,试着改为一句shell,效果很不错:
 <code>
 for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/null| grep 'img src=.*.jpg.*' | sed 's/.*img src="(.*.jpg).*$/\1/' | xargs wget --timeout=5; done
@@ -126,9 +126,9 @@ for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/n
   
   <entry>
     <title type="html"><![CDATA[tmux使用心得小记]]></title>
-    <link href="http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
+    <link href="http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/"/>
     <updated>2012-10-25T13:55:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
+    <id>http://www.lovelin.info/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji</id>
     <content type="html"><![CDATA[<h2>前言</h2>
 
 <p>有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性:</p>

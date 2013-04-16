@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: raspberry pi | 黑皮窝]]></title>
-  <link href="http://assassingj.github.com/blog/categories/raspberry-pi/atom.xml" rel="self"/>
-  <link href="http://assassingj.github.com/"/>
-  <updated>2013-04-16T14:58:54+08:00</updated>
-  <id>http://assassingj.github.com/</id>
+  <link href="http://www.lovelin.info/blog/categories/raspberry-pi/atom.xml" rel="self"/>
+  <link href="http://www.lovelin.info/"/>
+  <updated>2013-04-16T18:40:28+08:00</updated>
+  <id>http://www.lovelin.info/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[将raspberry pi目录备份到dropbox]]></title>
-    <link href="http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/"/>
+    <link href="http://www.lovelin.info/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/"/>
     <updated>2013-04-16T14:14:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox</id>
+    <id>http://www.lovelin.info/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox</id>
     <content type="html"><![CDATA[<p>上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。</p>
 
 <p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
