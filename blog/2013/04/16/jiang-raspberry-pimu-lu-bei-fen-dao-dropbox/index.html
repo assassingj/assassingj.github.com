@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>一些想法. - 黑皮窝</title>
+  <title>将raspberry pi目录备份到dropbox - 黑皮窝</title>
   <meta name="author" content="gaojian">
 
   
-  <meta name="description" content="一遍遍听着summer of 69 和Just one last dance, before we say goodbye when we sway and turn round and round and round, 曾想一直round下去, 也想在悠扬的苏格兰风笛中, &hellip;">
+  <meta name="description" content="上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。 但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://assassingj.github.com/blog/2007/05/28/e4b880e4ba9be683b3e6b395/">
+  <link rel="canonical" href="http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">一些想法.</h1>
+      <h1 class="entry-title">将raspberry Pi目录备份到dropbox</h1>
     
     
       <p class="meta">
@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2007-05-28T00:00:00+08:00" pubdate data-updated="true">May 28<span>th</span>, 2007</time>
+<time datetime="2013-04-16T14:14:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -104,7 +104,35 @@
   </header>
 
 
-<div class="entry-content"><p><![CDATA[要毕业了,回想一下. <br />一遍遍听着summer of  69 和Just one last dance, <br />before we say goodbye when we sway <br />and turn round and round and round, <br />曾想一直round下去, <br />也想在悠扬的苏格兰风笛中, <br />如华莱氏般高呼freedom. <br />喜欢马克西姆恢弘的出埃及记, <br />也喜欢保罗莫里哀静谧的蓝色的爱. <br />喜欢清脆的<<牧民新歌>>竹笛声, <br />也喜欢劲爆的<<walking IN THE SUN>>DJ曲. <br />大多数时候静静呆在寝室做<span style="font-size:13px;line-height:1.8em;">otaku</span><wbr />宅男, <br />但也曾在KTV和大家一起喝酒唱歌肆意狂放. <br />大部分时候都按时上床睡觉, <br />但也曾看书到2点忘记吃午饭. <br />看<<蜡笔小新>>和<<猫和老鼠>>并且毫不掩饰自己的笑容, <br />也看<<对不起，我爱你>>但不着痕迹地擦去泪水. <br />不顾一切坚持自己的原则与梦想, <br />却也受所爱的人影响直到不再爱吃西红柿. <br />一边埋怨着某人要少吃这少吃那注意身体, <br />一边屁颠屁颠地去买给她. <br />平时看看波西米亚风格的衣服饰品,<br />但是始终穿着大众化的T恤.<br />钦佩犹太人,<br />但以自己是炎黄子孙而感到自豪.<br />听摇滚童话用稚嫩的声音说forever young,<br />同时想着怎么让自己变得更成熟.<br /><br /><br /><br /> <br /> <br /> <br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />   ]]></p>
+<div class="entry-content"><p>上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。</p>
+
+<p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
+
+<p>h2.  打包指定的目录<br/>
+<code>
+tar czvf xx.tar.gz ~/xxx
+</code> <br/>
+我只备份了重要的目录， 如果想backup整个系统，可能需要 <br/>
+<code>
+cd / <br/>
+sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+</code></p>
+
+<p>h2.  上传打包文件至dropbox
+懒得再研究dropbox的API了，此处我使用了开源的<a href="https://github.com/andreafabrizi/Dropbox-Uploader">dropbox_uploader</a> ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可</p>
+
+<p>将上面两步用脚本包装一下,脚本如下</p>
+
+<script src="https://gist.github.com/assassingj/5393859.js"></script>
+
+
+<p>h2. 定时执行
+这个借助crontab非常简单,crontab新建一条任务
+<code>
+0 12 * * * /home/pi/backup.sh
+</code></p>
+
+<p>于是，每天12点就会自动backup目录并上传至dropbox上了,也不用担心哪天忘记rsync</p>
 </div>
 
 
@@ -127,12 +155,12 @@
   
 
 
-<time datetime="2007-05-28T00:00:00+08:00" pubdate data-updated="true">May 28<span>th</span>, 2007</time>
+<time datetime="2013-04-16T14:14:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/other/'>other</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+    <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/raspberry-pi/'>raspberry pi</a>, <a class='category' href='/blog/categories/technology/'>technology</a>
   
 </span>
 
@@ -141,7 +169,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://assassingj.github.com/blog/2007/05/28/e4b880e4ba9be683b3e6b395/" data-via="" data-counturl="http://assassingj.github.com/blog/2007/05/28/e4b880e4ba9be683b3e6b395/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/" data-via="" data-counturl="http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/" >Tweet</a>
   
   
   
@@ -150,10 +178,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2007/05/21/5qe4b88ae79c8be588b0e79a84/" title="Previous Post: 5q上看到的">&laquo; 5q上看到的</a>
+        <a class="basic-alignment left" href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/" title="Previous Post: tmux 下无法自定义encoding的解决方案">&laquo; tmux 下无法自定义encoding的解决方案</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2007/08/30/e59ca8e9b98fe59f8e/" title="Next Post: 在鹏城">在鹏城 &raquo;</a>
       
     </p>
   </footer>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | 黑皮窝]]></title>
   <link href="http://assassingj.github.com/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://assassingj.github.com/"/>
-  <updated>2013-04-16T13:46:47+08:00</updated>
+  <updated>2013-04-16T14:45:03+08:00</updated>
   <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[将raspberry pi目录备份到dropbox]]></title>
+    <link href="http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/"/>
+    <updated>2013-04-16T14:14:00+08:00</updated>
+    <id>http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox</id>
+    <content type="html"><![CDATA[<p>上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。</p>
+
+<p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
+
+<p>h2.  打包指定的目录<br/>
+<code>
+tar czvf xx.tar.gz ~/xxx
+</code> <br/>
+我只备份了重要的目录， 如果想backup整个系统，可能需要 <br/>
+<code>
+cd / <br/>
+sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+</code></p>
+
+<p>h2.  上传打包文件至dropbox
+懒得再研究dropbox的API了，此处我使用了开源的<a href="https://github.com/andreafabrizi/Dropbox-Uploader">dropbox_uploader</a> ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可</p>
+
+<p>将上面两步用脚本包装一下,脚本如下</p>
+
+<script src="https://gist.github.com/assassingj/5393859.js"></script>
+
+
+<p>h2. 定时执行
+这个借助crontab非常简单,crontab新建一条任务
+<code>
+0 12 * * * /home/pi/backup.sh
+</code></p>
+
+<p>于是，每天12点就会自动backup目录并上传至dropbox上了,也不用担心哪天忘记rsync</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[tmux 下无法自定义encoding的解决方案]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: technology | 黑皮窝]]></title>
   <link href="http://assassingj.github.com/blog/categories/technology/atom.xml" rel="self"/>
   <link href="http://assassingj.github.com/"/>
-  <updated>2013-04-16T13:46:47+08:00</updated>
+  <updated>2013-04-16T14:45:03+08:00</updated>
   <id>http://assassingj.github.com/</id>
   <author>
     <name><![CDATA[gaojian]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[将raspberry pi目录备份到dropbox]]></title>
+    <link href="http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/"/>
+    <updated>2013-04-16T14:14:00+08:00</updated>
+    <id>http://assassingj.github.com/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox</id>
+    <content type="html"><![CDATA[<p>上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。</p>
+
+<p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
+
+<p>h2.  打包指定的目录<br/>
+<code>
+tar czvf xx.tar.gz ~/xxx
+</code> <br/>
+我只备份了重要的目录， 如果想backup整个系统，可能需要 <br/>
+<code>
+cd / <br/>
+sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+</code></p>
+
+<p>h2.  上传打包文件至dropbox
+懒得再研究dropbox的API了，此处我使用了开源的<a href="https://github.com/andreafabrizi/Dropbox-Uploader">dropbox_uploader</a> ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可</p>
+
+<p>将上面两步用脚本包装一下,脚本如下</p>
+
+<script src="https://gist.github.com/assassingj/5393859.js"></script>
+
+
+<p>h2. 定时执行
+这个借助crontab非常简单,crontab新建一条任务
+<code>
+0 12 * * * /home/pi/backup.sh
+</code></p>
+
+<p>于是，每天12点就会自动backup目录并上传至dropbox上了,也不用担心哪天忘记rsync</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[tmux 下无法自定义encoding的解决方案]]></title>
@@ -183,39 +220,6 @@ setw synchronize-panes
 你输入的命令将在所有pane中出现执行 <br/>
 <a href="http://www.flickr.com/photos/85525219@N04/8178095816/" title="syn-pane by 爱琳说, on Flickr"><img src="http://farm9.staticflickr.com/8486/8178095816_1841eca896.jpg" width="500" height="313" alt="syn-pane"></a></li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[实现ip地址自动上传过程分析]]></title>
-    <link href="http://assassingj.github.com/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/"/>
-    <updated>2012-10-22T00:00:00+08:00</updated>
-    <id>http://assassingj.github.com/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90</id>
-    <content type="html"><![CDATA[<p><p>不像大学那会，想买台赛扬CPU没独显也无所谓的台式机的小小愿望都无法实现，工作了的同学很多时候有好几台电脑。公司一台，家里一台，或者公司台式机一台，笔记本一台。如果想从A电脑SSH到B电脑，而B电脑又是DHCP的居无定所（没有固定IP），那么就需要B自己告诉我们IP地址。</p>
-<p>要达成目标我们需要做三件事情：</p>
-<ol>
-<li>在某些时刻B电脑找出本机IP地址</li>
-<li>.upload这一IP到一个公共空间</li>
-<li>A电脑获取这一IP</li>
-</ol>
-<h3>分析</h3>
-<p>第1点，在linux上找出本机IP方法是很多的，在ifconfig后用grep, cut, awk, sed等处理下就好，关键在于何时运行呢？有两种方法：一种是借助cron工具定时去执行,一种是在网络环境发生变化时触发执行，有点像select与epoll的区别。如果以去银行排队办业务为例来说，前者就像是每2分钟去柜台问下可不可以为我办了，后者则是在大厅经理那拿一个注册号码，轮到你了就广播叫你,显然后者的机制会有效率且实时.</p>
-<p>ubuntu下可借助/etc/network/if-up.d这个文件夹, 在网络接口起来后会执行该文件夹下面所有可执行的脚本（与/etc/rcx.d类似,不过触发时间点一个是在系统启动时一个是在网络接口准备好时），所以我们可以将采集IP的脚本扔到这个文件夹下，这样当网络有变化时会自动执行了</p>
-<p>mac下稍微麻烦点, 先借助scutil看看我们关心的网络变化这个点在系统中是如何注册的,我关心的是ipv4的变化(也可以是你关心的具体某个网络接口的state (如: subKey [54] = State:/Network/Interface/en1/IPv4)</p>
-<p><a title="View 'scutil2' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112241063"><img title="scutil2" src="http://farm9.staticflickr.com/8333/8112241063_895c69c804.jpg" alt="scutil2" width="500" height="223" border="0" /></a></p>
-<p>当我们的网络接口发生变化时,就可以根据这个key来监控了(如下为停止无线和启用无线触发的)</p>
-<p><a title="View 'watch' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112258368"><img title="watch" src="http://farm9.staticflickr.com/8050/8112258368_1d9c3d882e.jpg" alt="watch" width="500" height="149" border="0" /></a></p>
-<p>要做到全自动,可以借助python+SystemConfiguration,脚本如下(获取IP部分可自由修改,甚至用shell等其他方式实现,我们需要的只是trigger这个动作)
-<script src="https://gist.github.com/3931024.js?file=network.py"></script>
-</p>
-<p>第2点，可选的很多. ftp, 个人空间, github等等</p>
-<p>以github为例,可以将新的IP push到repository中,这样其他需要查看该IP的机器pull一下就可以获得最新的IP</p></p>
-
-
-
-
-<p><p>第3点 简单的办法就是轮询了,还是以github为例,定时pull最新的版本下来就OK了,不过会有一定的延时(你不会配置一个cron 每秒扫描一次网络吧??), 能想到的实时的方案就是借助自己的VPS, 以VPS为中介服务器,A电脑通过socket到VPS上, B电脑在获取到新的IP后将IP推送到VPS上(可以开socket,也可以直接rsync,由VPS的inotify-tools监控文件变化),VPS服务器收到新IP后发送IP给A电脑, 并触发事件(借助这个事件我们可以做一些更新的动作,比如A电脑绑定了hosts文件的可以重写hosts文件)</p></p>
 
 ]]></content>
   </entry>

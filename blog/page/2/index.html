@@ -9,9 +9,9 @@
   <meta name="author" content="gaojian">
 
   
-  <meta name="description" content="背景
-身为一名programmer，沉浸在自己的代码世界忽略其他是常有的事情。“山中无甲子,寒尽不知年”，猛一回头一个下午又过去了，今天又忘记喝水了，脸色又黄又油，小名都快由黑皮改为黄皮了，晚上回家被狠P了几句。
-我需要一个助理，定时提醒我喝水，cron是UNIX世界的贴心管家， &hellip;">
+  <meta name="description" content="我觉得用命令行的最大好处之一是可以像影碟一样录好后重放无数次.
+每天的工作中，做code review是经常遇到的事情，怎样快速显示本分支的SVN变更.
+尝试了几次后，如下一句即可，在此备忘下。 [cc lang=&#8221;python&#8221;]svn di -r `svn log -v &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4/">一行命令review代码变更</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-26T00:00:00+08:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><p style="font-size: 15px;">我觉得用命令行的最大好处之一是可以像影碟一样录好后重放无数次.</p>
+<p style="font-size: 15px;">每天的工作中，做code review是经常遇到的事情，怎样快速显示本分支的SVN变更.</p>
+<p style="font-size: 15px;">尝试了几次后，如下一句即可，在此备忘下。</p>
+<p style="font-size: 15px;">
+[cc lang=&#8221;python&#8221;]svn di -r `svn log -v &#8211;stop-on-copy | grep -B4 &#8220;svn copy&#8221; | head -1 | awk &#8216;{print substr($1, 2)}&#8217;`:HEAD[/cc]</p>
+<p style="font-size: 15px;">做成alias或者写一句脚本，此后的review不用再每次找版本号找半天了.</p>
+<p style="font-size: 15px;">PS: 什么是HEAD?</p>
+<p style="font-size: 15px;">见<a href="http://en.wikipedia.org/wiki/Revision_control#Common_vocabulary">http://en.wikipedia.org/wiki/Revision_control#Common_vocabulary</a></p>
+<p style="font-size: 15px;"> </p>
+<p style="font-size: 15px;"> </p>
+<p> </p></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -725,57 +773,6 @@ export LIBS=&#8217;-lm -ltermcap -lresolv&#8217;<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/29/e58f88e4b880e4b8aaaie7bd91e7ab99/">又一个AI网站</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-29T00:00:00+08:00" pubdate data-updated="true">Dec 29<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/12/29/e58f88e4b880e4b8aaaie7bd91e7ab99/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.wolframalpha.com/" title="http://www.wolframalpha.com/">http://www.wolframalpha.com/</a></p>
-
-<p>我试着问了几个问题<br />
-1.who is Steven Jobs?<br />
-answer:
-<a href="http://www.anlovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.18.55-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.18.55-PM-269x300.png" alt="" title="Screen Shot 2011-12-29 at 6.18.55 PM" width="269" height="300" class="alignnone size-medium wp-image-83" /></a></p>
-
-<p>2.x^2+10x+1=76<br />
-answer:
-<a href="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.22.37-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.22.37-PM.png" alt="" title="Screen Shot 2011-12-29 at 6.22.37 PM" width="567" height="621" class="alignnone size-full wp-image-84" /></a></p>
-
-<p>3.all prime number bewteen 1 and 1000？<br />
-answer:
-<a href="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.26.52-PM.png"><img src="http://www.lovelin.info/wp-content/uploads/2011/12/Screen-Shot-2011-12-29-at-6.26.52-PM.png" alt="" title="Screen Shot 2011-12-29 at 6.26.52 PM" width="565" height="207" class="alignnone size-full wp-image-85" /></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -793,6 +790,10 @@ answer:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/">将raspberry pi目录备份到dropbox</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">tmux 下无法自定义encoding的解决方案</a>
       </li>
     
@@ -808,15 +809,11 @@ answer:
         <a href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/">shell版的下妹子图</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">tmux使用心得小记</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/linux'>linux (2)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (19)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/linux'>linux (3)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/raspberry-pi'>raspberry pi (1)</a></li><li><a href='/blog/categories/technology'>technology (20)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li></ul>
 </section>
 
 

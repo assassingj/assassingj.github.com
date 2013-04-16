@@ -9,7 +9,7 @@
   <meta name="author" content="gaojian">
 
   
-  <meta name="description" content="之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed&#8230; 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景.. 开始我用iterm2新建了一套profile, &hellip;">
+  <meta name="description" content="上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。 但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/">将raspberry Pi目录备份到dropbox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-16T14:14:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。</p>
+
+<p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
+
+<p>h2.  打包指定的目录<br/>
+<code>
+tar czvf xx.tar.gz ~/xxx
+</code> <br/>
+我只备份了重要的目录， 如果想backup整个系统，可能需要 <br/>
+<code>
+cd / <br/>
+sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+</code></p>
+
+<p>h2.  上传打包文件至dropbox
+懒得再研究dropbox的API了，此处我使用了开源的<a href="https://github.com/andreafabrizi/Dropbox-Uploader">dropbox_uploader</a> ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可</p>
+
+<p>将上面两步用脚本包装一下,脚本如下</p>
+
+<script src="https://gist.github.com/assassingj/5393859.js"></script>
+
+
+<p>h2. 定时执行
+这个借助crontab非常简单,crontab新建一条任务
+<code>
+0 12 * * * /home/pi/backup.sh
+</code></p>
+
+<p>于是，每天12点就会自动backup目录并上传至dropbox上了,也不用担心哪天忘记rsync</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -646,54 +712,6 @@ setw synchronize-panes
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4/">一行命令review代码变更</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-26T00:00:00+08:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/04/26/e4b880e8a18ce591bde4bba4reviewe4bba3e7a081e58f98e69bb4/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><p style="font-size: 15px;">我觉得用命令行的最大好处之一是可以像影碟一样录好后重放无数次.</p>
-<p style="font-size: 15px;">每天的工作中，做code review是经常遇到的事情，怎样快速显示本分支的SVN变更.</p>
-<p style="font-size: 15px;">尝试了几次后，如下一句即可，在此备忘下。</p>
-<p style="font-size: 15px;">
-[cc lang=&#8221;python&#8221;]svn di -r `svn log -v &#8211;stop-on-copy | grep -B4 &#8220;svn copy&#8221; | head -1 | awk &#8216;{print substr($1, 2)}&#8217;`:HEAD[/cc]</p>
-<p style="font-size: 15px;">做成alias或者写一句脚本，此后的review不用再每次找版本号找半天了.</p>
-<p style="font-size: 15px;">PS: 什么是HEAD?</p>
-<p style="font-size: 15px;">见<a href="http://en.wikipedia.org/wiki/Revision_control#Common_vocabulary">http://en.wikipedia.org/wiki/Revision_control#Common_vocabulary</a></p>
-<p style="font-size: 15px;"> </p>
-<p style="font-size: 15px;"> </p>
-<p> </p></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -707,6 +725,10 @@ setw synchronize-panes
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/">将raspberry pi目录备份到dropbox</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">tmux 下无法自定义encoding的解决方案</a>
@@ -724,15 +746,11 @@ setw synchronize-panes
         <a href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/">shell版的下妹子图</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">tmux使用心得小记</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/linux'>linux (2)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/technology'>technology (19)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/linux'>linux (3)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/raspberry-pi'>raspberry pi (1)</a></li><li><a href='/blog/categories/technology'>technology (20)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li></ul>
 </section>
 
 
