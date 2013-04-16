@@ -108,8 +108,9 @@
 
 <p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
 
-<p>h2.  打包指定的目录<br/>
-<code>
+<h3>打包指定的目录</h3>
+
+<p><code>
 tar czvf xx.tar.gz ~/xxx
 </code> <br/>
 我只备份了重要的目录， 如果想backup整个系统，可能需要 <br/>
@@ -118,16 +119,18 @@ cd / <br/>
 sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
 </code></p>
 
-<p>h2.  上传打包文件至dropbox
-懒得再研究dropbox的API了，此处我使用了开源的<a href="https://github.com/andreafabrizi/Dropbox-Uploader">dropbox_uploader</a> ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可</p>
+<h3>上传打包文件至dropbox</h3>
+
+<p>懒得再研究dropbox的API了，此处我使用了开源的<a href="https://github.com/andreafabrizi/Dropbox-Uploader">dropbox_uploader</a> ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可</p>
 
 <p>将上面两步用脚本包装一下,脚本如下</p>
 
 <script src="https://gist.github.com/assassingj/5393859.js"></script>
 
 
-<p>h2. 定时执行
-这个借助crontab非常简单,crontab新建一条任务
+<h3>定时执行</h3>
+
+<p>这个借助crontab非常简单,crontab新建一条任务
 <code>
 0 12 * * * /home/pi/backup.sh
 </code></p>
