@@ -13,7 +13,7 @@ categories:
 
 但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有
 
-h2.  打包指定的目录  
+###  打包指定的目录  
 <code>
 tar czvf xx.tar.gz ~/xxx
 </code>   
@@ -23,14 +23,14 @@ cd /
 sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
 </code>    
 
-h2.  上传打包文件至dropbox
+###  上传打包文件至dropbox
 懒得再研究dropbox的API了，此处我使用了开源的[dropbox_uploader](https://github.com/andreafabrizi/Dropbox-Uploader) ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可
 
 将上面两步用脚本包装一下,脚本如下
 <script src="https://gist.github.com/assassingj/5393859.js"></script>
 
 
-h2. 定时执行
+###  定时执行
 这个借助crontab非常简单,crontab新建一条任务
 <code>
 0 12 * * * /home/pi/backup.sh
