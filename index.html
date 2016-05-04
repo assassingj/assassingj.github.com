@@ -1,814 +1,141 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <title>黑皮窝</title>
-  <meta name="author" content="gaojian">
-
-  
-  <meta name="description" content="上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。 但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup， &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://www.lovelin.info/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="黑皮窝" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-28775026-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.15" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://replace-this-with-your-hugo-site.com/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="http://replace-this-with-your-hugo-site.com/index.xml" type="application/rss+xml" title="黑皮">
+<title>黑皮</title>
 </head>
+<body>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">黑皮窝</a></h1>
-  
-    <h2>technology, tips</h2>
-  
-</hgroup>
-
+<header>
+  <div class="container">
+    <a class="path" href="http://replace-this-with-your-hugo-site.com/">[黑皮]</a>
+    <span class="caret"># _</span>
+  </div>
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.lovelin.info" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
+<div class="container">
+
+
+
+<main role="main" class="homepage">
+
+  <h1 class="site-title">
+  <span class="base05">[</span><span class="base08">b</span><span class="base09">a</span><span class="base0a">s</span><span class="base0b">e</span><span class="base0c">1</span><span class="base0d">6</span><span class="base05">]</span>
+  <span class="base05"># _</span>
+</h1>
+
+<div class="hero-logo">
+  <img src="/img/base16-eighties.svg">
+</div>
+
+<div style="text-align: center;">
+  Add your own "<code>layouts/partials/hero.html</code>" to replace this text.
+</div>
+
+
+  <h1 class="headline">Recent Posts</h1>
+
+  <div class="article-list">
+    
       
-  <header>
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">tmux下无法自定义encoding的解决方案</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2013-04-16">April 16, 2013</time></span>
+
+  </div>
+  <section class="summary">
+    之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed&hellip; 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景.. 开始我用iterm2新建了一套profile,初始化时指定character encoding为gb2312,可以满足需求，昨天将其改为luit了,这样不用新开tab 实施luit非常简单，唯一需要注意的是mac lion下可能会出现 &gt;couldn&rsquo;t copy terminal setting 这样的error, 我download了luit的最新源码，自己compile出来是没这个问题的,在.zshrc中加入alias alias ssh2server=&lsquo;luit -encoding gbk ssh xxx@shterm.xxx.net&rsquo; 以后上线上服务器直接ssh2server吧。 
+  </section>
+</article>
+
     
-      <h1 class="entry-title"><a href="/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/">将raspberry Pi目录备份到dropbox</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-16T14:14:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。</p>
-
-<p>但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有</p>
-
-<h3>打包指定的目录</h3>
-
-<p><code>
-tar czvf xx.tar.gz ~/xxx
-</code> <br/>
-我只备份了重要的目录， 如果想backup整个系统，可能需要 <br/>
-<code>
-cd / <br/>
-sudo tar czvfp xxx.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
-</code></p>
-
-<h3>上传打包文件至dropbox</h3>
-
-<p>懒得再研究dropbox的API了，此处我使用了开源的<a href="https://github.com/andreafabrizi/Dropbox-Uploader">dropbox_uploader</a> ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可</p>
-
-<p>将上面两步用脚本包装一下,脚本如下</p>
-
-<script src="https://gist.github.com/assassingj/5393859.js"></script>
-
-
-<h3>定时执行</h3>
-
-<p>这个借助crontab非常简单,crontab新建一条任务
-<code>
-0 12 * * * /home/pi/backup.sh
-</code></p>
-
-<p>于是，每天12点就会自动backup目录并上传至dropbox上了,也不用担心哪天忘记rsync</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/">将raspberry pi 备份到dropbox</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2013-04-16">April 16, 2013</time></span>
+
+  </div>
+  <section class="summary">
+    上个周raspberry pi突然就无法引导启动了,看了dmesg的信息，大概是我修改了fstab文件引起的。所幸上面的文件我都rsync过一份到我的mac上，所以干脆重装os。 但这个事情教育我们backup很重要，我决定保险一点，让raspberry pi定时自动做backup，并将backup文件放到dropbox上.步骤有 打包指定的目录 tar czvf xx.tar.gz ~/xxx 我只备份了重要的目录， 如果想backup整个系统，可能需要 cd / sudo tar czvfp xxx.tar.gz &ndash;exclude=/proc &ndash;exclude=/lost+found &ndash;exclude=/backup.tgz &ndash;exclude=/mnt &ndash;exclude=/sys / 上传打包文件至dropbox 懒得再研究dropbox的API了，此处我使用了开源的dropbox_uploader ,github上的README很详尽,我需要做的是在dropbox上新建一个app,并取得api key和app secret即可 将上面两步用脚本包装一下,脚本如下 定时执行 这个借助crontab非常简单,crontab新建一条任务 0 12 * * * /home/pi/backup.sh 于是，每天12点就会自动backup目录并上传至dropbox上了,也不用担心哪天忘记rsync 
+  </section>
+</article>
+
     
-      <h1 class="entry-title"><a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">Tmux 下无法自定义encoding的解决方案</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-16T10:56:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>之前在国际站，使用utf-8是非常自然的事情,甚至无论中美所有服务器时区也按照标准的USA来设。到了ALIPAY后，everything changed&#8230; 代码，日志文件很统一地用了GBK编码,于是出现了tmux无法应付的场景..</p>
-
-<p>开始我用iterm2新建了一套profile,初始化时指定character encoding为gb2312,可以满足需求，昨天将其改为luit了,这样不用新开tab</p>
-
-<p>实施<a href="http://invisible-island.net/luit/">luit</a>非常简单，唯一需要注意的是mac lion下可能会出现</p>
-
-<blockquote><p>couldn&#8217;t copy terminal setting</p></blockquote>
-
-<p>这样的error, 我download了luit的最新源码，自己compile出来是没这个问题的,在.zshrc中加入alias
-<code></p>
-
-<pre><code>alias ssh2server='luit -encoding gbk ssh xxx@shterm.xxx.net'
-</code></pre>
-
-<p></code></p>
-
-<p>以后上线上服务器直接ssh2server吧。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">Golang写个简单的cmus歌词插件</a></h1>
-    
-    
-      <p class="meta">
-        
+<article class="list-item" itemscope itemtype="http://schema.org/Blog">
+  <h2 class="headline" itemprop="headline"><a href="/post/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">golang写个简单的cmus歌词插件</a></h2>
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2013-04-11">April 11, 2013</time></span>
+
+  </div>
+  <section class="summary">
+    一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进 目前已实现： 检测cmus运行状态 获取cmus当时正在play的歌曲meta信息 根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API 打印第一匹配的歌词 待实现: 终端下的termbox 同一首歌的cache 自主search 选择歌词 歌词滚动？？ &hellip; 
+  </section>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-11T21:53:00+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一直用cmus听歌，终于发现有时候想看看歌词，但cmus下没有合适的插件，所以自己先写个最最简单的，后续有兴趣的时候可以改进
-目前已实现：</p>
-
-<ol>
-<li>检测cmus运行状态</li>
-<li>获取cmus当时正在play的歌曲meta信息</li>
-<li>根据歌手和歌曲名去歌词服务器query歌词,用的是geci.me 这个API</li>
-<li>打印第一匹配的歌词</li>
-</ol>
-
-
-<p>待实现:</p>
-
-<ol>
-<li>终端下的termbox</li>
-<li>同一首歌的cache</li>
-<li>自主search 选择歌词</li>
-<li>歌词滚动？？</li>
-<li>&#8230;</li>
-</ol>
-
-
-<script src="https://gist.github.com/assassingj/5363551.js"></script>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/17/ci-qu-jing-nian/">此去经年</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-17T14:37:00+08:00" pubdate data-updated="true">Mar 17<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/03/17/ci-qu-jing-nian/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>又是一年。春节时又回到了常德桃源,刚刚走到爷爷的坟前还没来得及祭坟，就看到年前腿被撞骨折了的奶奶拄着拐杖在等候，所谓的&#8221;野老念牧童，倚杖候柴扉&#8221;的情景大概也不过如此。</p>
-
-<p>和老婆走到昔日童年的乐园而今满是杂草的老家遗址, 我指着对面山岗对她说, 小时候每次爸爸回来,开的车就停在那条路上。吃完晚饭, 二叔从电脑里找出了已经泛黄然后翻拍的老照片，照片上的很多像妈妈那样的年青人都已经老去，而当时被抱在各自妈妈怀里的像我这样的小屁孩，则领着各自的另一半回来拜访，在这过程中经历了坐车从免票，到半票，到全票的过程,直至准备培养免票的下一代，这让我联想到数学中的圆，计算机中的while， 佛教的轮回，道家的五行，质量管理的PDCA，自然界的生态系统。。。</p>
-
-<p>春节结束后又回到繁忙的项目室。每次都说当前是困难时期艰辛环境，却也不见自己有半点龙场悟道的迹象。去年对老大说，我会改变我能改变的，也会接受我不能改变的。这句话说出来很简单，但关键的point是需要足够的智慧分辨哪些是我能改变的，哪些是我改变不了的，哪些是我应该改变的，哪些是我不应该改变的。</p>
-
-<p>家庭，工作，老婆,小孩，未来发展? 每次总能找到这样那样的借口说先做完当下，却不记得曾国藩说&#8221;负薪牧豕皆可读书&#8221;, 无名氏说&#8221;心中若有桃花源, 何处不是水云间?&#8221; ，其实该想想自己真正想要的是什么，然后坚定不移地走过去。</p>
-
-<p>我发现我很多观点都和Paul Graham相似：一样的不喜欢静态类型，哪怕现在的工作语言是JAVA，但私下对python,shell流更感兴趣；想做一份day job，把晚上的时间留给自己，无论是研究下怎么把HMM和微信整合到raspberry pi或是和家人一起看场电影。我有很多想法，但大部分只有三分钟热度，没有给自己留下足够的时间，这完全不符合hack ethic第一条：</p>
-
-<blockquote><p>Always yield to the Hands-On Imperative</p></blockquote>
-
-<p>新的一年，对自己新的期望。一期保持心态，日拱一卒； 二期了断因果，尘埃落定。对《想飞的钢琴少年》中爷爷把帽子扔向河对岸的场景印象特别深刻，伴随的台词是“如果下不了决定，就得先舍弃一些东西”。“此去经年，应是良辰好景”，后面的不说了，不吉利。</p>
-
-<p>以上。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/">Shell版的下妹子图</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-22T00:43:00+08:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2013</time>
-        
-         | <a href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在osc上看到一篇python写的<a href="http://www.oschina.net/code/snippet_13769_17481" title="下妹子图">下妹子图</a>,试着改为一句shell,效果很不错:
-<code>
-for i in {1..700}; do curl -q "http://jandan.net/ooxx/page-$i#comments" 2>/dev/null| grep 'img src=.*.jpg.*' | sed 's/.*img src="(.*.jpg).*$/\1/' | xargs wget --timeout=5; done
-</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/">Tmux使用心得小记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-25T13:55:00+08:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/25/tmuxshi-yong-xin-de-xiao-ji/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>前言</h2>
-
-<p>有大屏幕后不用终端复用软件来提高效率简直就是暴殄天物, 之前一直用的是terminator终端来完成这个功能,但有一些局限性:</p>
-
-<pre><code>1.mac下没有terminator,虽然有iterm之类替代,但非吾所愿,我要的是通用解决方案
-2.和X做了绑定, 纯命令行下无法使用terminator
-</code></pre>
-
-<p>tmux与GNU screen类似,但是来自openbsd, 使用它最直接的用处是可以切屏,当然好处远不止于此.下面是tmux的一些feature:</p>
-
-<ul>
-<li>A powerful, consistent, well-documented and easily scriptable command interface.</li>
-<li>A window may be split horizontally and vertically into panes.</li>
-<li>Panes can be freely moved and resized, or arranged into preset layouts.</li>
-<li>Support for UTF-8 and 256-colour terminals.</li>
-<li>Copy and paste with multiple buffers.</li>
-<li>Interactive menus to select windows, sessions or clients.</li>
-<li>Change the current window by searching for text in the target.</li>
-<li>Terminal locking, manually or after a timeout.</li>
-<li>A clean, easily extended, BSD-licensed codebase, under active development.</li>
-</ul>
-
-
-<h2>安装</h2>
-
-<p>tmux的安装非常简单,ubuntu下 <br/>
-<code>sudo aptitude install tmux</code><br/>
-mac下ports或者brew都可以直接install,以brew为例<br/>
-<code>sudo brew install tmux</code> <br/>
-想自己编译可以从<a href="http://tmux.sourceforge.net/" title="tmux web">官网</a> download源码</p>
-
-<h2>基本用法</h2>
-
-<p>最好的办法man,openbsd上也提供了一份<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=tmux&amp;sektion=1" title="manual page">手册</a>
-开启一个终端, 输入tmux命令. 基本上所有的操作都需要先按下prefix键(默认是ctrl+b),
-比如<br/>
-1. 水平分割一个pane,先ctrl+b,再双引号<br/>
-2. 垂直分割一个pane,先ctrl+b, 再百分号<br/>
-3. 脱离当前会话,ctrl+b后 d, 此处的脱离是暂时离开,实际当前所有的工作场景都是保留的,并且在后台持续运行,后续可以通过tmux attach重新接入进来,有点nohup的感觉,所以你可以今天SSH上某台服务器,开个tmux,跑某个任务,然后注销这次SSH,明天再SSH上来attach上次的会话,看看任务是否跑完</p>
-
-<p>不习惯看英文的同学<a href="https://wiki.freebsdchina.org/software/t/tmux">此处</a>有一些基本的中文操作手册</p>
-
-<h2>个性化折腾</h2>
-
-<p>生命不息,折腾不止.自己定制的才是最适合自己的,如此强大的工具要慢慢挖掘
-1. 改prefix键, ctrl+b没手感,改为ctrl+h
-修改~/.tmux.conf(如果没有则新建一个),新增如下内容:<br/>
-<code>
-set -g prefix C-h
-unbind-key C-b
-</code></p>
-
-<ol>
-<li><p>启动shell时自动进入tmux, 如果没有会话则新建一个,有则直接attach
-在.zshrc(bash用户可能是.bashrc)的最后加入tmux就直接启动了,但要做些逻辑判断
-最后的脚本如下:<br/>
-<code>
-test -z "$TMUX" &amp;&amp; (tmux attach || tmux new-session)
-</code></p></li>
-<li><p>定制状态栏, 想在状态栏上加点自己随时感兴趣的东西
-因为是动态IP,平常时不时会要ifconfig一下,于是将IP固定显示在状态栏左边<br/>
-<code>
-set -g status-left-ength 21
-set -g status-left "#[bg=green,fg=white,bold]#(ifconfig | grep -A1 eth0 | tail -1 | awk '{print $2}' | awk -F: '{print $2}')"
-</code>
-开发的机器经常高load,可以将load放到状态栏右边,成天对着黑白terminal,怕忘记时间再在状态栏加上时间显示(一分钟refresh一次)<br/>
-<code>
-set -g status-right "#[bg=green,fg=white,bold]#(cut -d ' ' -f 1-3 /proc/loadavg) ● #[bg=green,fg=white,bold]#(date +%H:%M)"
-set -g status-interval 60
-</code>
-(其实在tmux中, 按下prefix键后 加t 会有个全屏的时钟出来)</p></li>
-<li><p>启动时初始化窗口
-想骚包吗？想假装高手吗，想打开tmux就自动就分N个窗口吗？
-在shell启动脚本中加入这些(替换之前的自启动脚本)</p></li>
-</ol>
-
-
-<script src="https://gist.github.com/4058032.js?file=tmux-init.sh"></script>
-
-
-<p>使用以上脚本会开两个window，并把第2个window分割成3份，最上面跑着htop,左边有个vim，右边一个dstat，效果如下图 <br/>
-<a href="http://www.flickr.com/photos/85525219@N04/8178078344/" title="all by 爱琳说, on Flickr"><img src="http://farm9.staticflickr.com/8488/8178078344_8c8ce9f1a5.jpg" width="500" height="313" alt="all"></a> <br/>
-具体需要启动什么，启动几个窗口，分割分几个pane, 都可以修改脚本定制</p>
-
-<ol>
-<li>多pane同步
-连了好几台服务器，想同时执行相同的命令，同时观察结果吗？在按下prefix键后按冒号进入command模式
-输入 <br/>
-<code>
-setw synchronize-panes
-</code> <br/>
-你输入的命令将在所有pane中出现执行 <br/>
-<a href="http://www.flickr.com/photos/85525219@N04/8178095816/" title="syn-pane by 爱琳说, on Flickr"><img src="http://farm9.staticflickr.com/8486/8178095816_1841eca896.jpg" width="500" height="313" alt="syn-pane"></a></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/">实现ip地址自动上传过程分析</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-22T00:00:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/22/e5ae9ee78eb0ipe59cb0e59d80e887aae58aa8e4b88ae4bca0e8bf87e7a88be58886e69e90/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><p>不像大学那会，想买台赛扬CPU没独显也无所谓的台式机的小小愿望都无法实现，工作了的同学很多时候有好几台电脑。公司一台，家里一台，或者公司台式机一台，笔记本一台。如果想从A电脑SSH到B电脑，而B电脑又是DHCP的居无定所（没有固定IP），那么就需要B自己告诉我们IP地址。</p>
-<p>要达成目标我们需要做三件事情：</p>
-<ol>
-<li>在某些时刻B电脑找出本机IP地址</li>
-<li>.upload这一IP到一个公共空间</li>
-<li>A电脑获取这一IP</li>
-</ol>
-<h3>分析</h3>
-<p>第1点，在linux上找出本机IP方法是很多的，在ifconfig后用grep, cut, awk, sed等处理下就好，关键在于何时运行呢？有两种方法：一种是借助cron工具定时去执行,一种是在网络环境发生变化时触发执行，有点像select与epoll的区别。如果以去银行排队办业务为例来说，前者就像是每2分钟去柜台问下可不可以为我办了，后者则是在大厅经理那拿一个注册号码，轮到你了就广播叫你,显然后者的机制会有效率且实时.</p>
-<p>ubuntu下可借助/etc/network/if-up.d这个文件夹, 在网络接口起来后会执行该文件夹下面所有可执行的脚本（与/etc/rcx.d类似,不过触发时间点一个是在系统启动时一个是在网络接口准备好时），所以我们可以将采集IP的脚本扔到这个文件夹下，这样当网络有变化时会自动执行了</p>
-<p>mac下稍微麻烦点, 先借助scutil看看我们关心的网络变化这个点在系统中是如何注册的,我关心的是ipv4的变化(也可以是你关心的具体某个网络接口的state (如: subKey [54] = State:/Network/Interface/en1/IPv4)</p>
-<p><a title="View 'scutil2' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112241063"><img title="scutil2" src="http://farm9.staticflickr.com/8333/8112241063_895c69c804.jpg" alt="scutil2" width="500" height="223" border="0" /></a></p>
-<p>当我们的网络接口发生变化时,就可以根据这个key来监控了(如下为停止无线和启用无线触发的)</p>
-<p><a title="View 'watch' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8112258368"><img title="watch" src="http://farm9.staticflickr.com/8050/8112258368_1d9c3d882e.jpg" alt="watch" width="500" height="149" border="0" /></a></p>
-<p>要做到全自动,可以借助python+SystemConfiguration,脚本如下(获取IP部分可自由修改,甚至用shell等其他方式实现,我们需要的只是trigger这个动作)
-<script src="https://gist.github.com/3931024.js?file=network.py"></script>
-</p>
-<p>第2点，可选的很多. ftp, 个人空间, github等等</p>
-<p>以github为例,可以将新的IP push到repository中,这样其他需要查看该IP的机器pull一下就可以获得最新的IP</p></p>
-
-<p><p>第3点 简单的办法就是轮询了,还是以github为例,定时pull最新的版本下来就OK了,不过会有一定的延时(你不会配置一个cron 每秒扫描一次网络吧??), 能想到的实时的方案就是借助自己的VPS, 以VPS为中介服务器,A电脑通过socket到VPS上, B电脑在获取到新的IP后将IP推送到VPS上(可以开socket,也可以直接rsync,由VPS的inotify-tools监控文件变化),VPS服务器收到新IP后发送IP给A电脑, 并触发事件(借助这个事件我们可以做一些更新的动作,比如A电脑绑定了hosts文件的可以重写hosts文件)</p></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/">mac升级至10.8后mail Rss的转移</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-08T00:00:00+08:00" pubdate data-updated="true">Oct 8<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/08/mace58d87e7baa7e887b3108e5908emailrsse79a84e8bdace7a7bb/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><p>升级至mountain lion后，猛的发现原来mail中订阅的rss全部不翼而飞，查阅资料后才知道新版mail不再支持rss了，所以需要将原来订阅好的rss转移下，这次下定决心全部挪到google reader中去，再用chrome plugin或者其他客户端来看，这样以后都不用担心丢失。</p>
-<p>做成这件事情需要两步：</p>
-<p>   1.找到我之前订阅的rss feed 列表</p>
-<p>   2.把列表中的feed全部subscribe到google reader中</p>
-<p>如果只是想找出feed列表是相当简单的，试过几次后发现，运行如下command就可以了：</p>
-<p><code>find ~/Library/Mail/V2/RSS/ -name "Info.plist" |xargs -I{}  grep -A 1 Feed {} | grep string | awk -F'[&lt;&gt;]' '{print $3}'</code></p>
-<p><a title="View 'rsslist' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066566462"><img title="rsslist" src="http://farm9.staticflickr.com/8031/8066566462_55ace23441.jpg" alt="rsslist" width="500" height="408" border="0" /></a></p>
-<p>如果需要将其自动import到google reader中，还需要用reader提供的api干点额外的活，我参考的api接口如下：</p>
-<p><a href="http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_%E4%BB%8B%E7%BB%8D">http://code.google.com/p/r2-release/wiki/GoogleReaderApi#google_reader_api_介绍</a></p>
-<p>要订阅feed，需要如下几步:</p>
-<ul>
-<li>获取google auth</li>
-<li>获取token</li>
-<li>订阅指定的feed</li>
-</ul>
-<p>连带之前的找feed列表的功能，脚本如下
-<script src="https://gist.github.com/3863977.js?file=rssmail2reader.py"></script></p>
-
-<p>完整版(其实就是加上README)放在 <a href="https://github.com/assassingj/mailrss2google">https://github.com/assassingj/mailrss2google</a>中</p>
-<p>执行
-<code>python rsstranfer.py peng.gaojian@gmail.com</code>输入密码就OK了<br />
-完成后再访问google reader,之前的订阅全回来了～<a title="View 'google reader' on Flickr.com" href="http://www.flickr.com/photos/85525219@N04/8066506348"><img title="google reader" src="http://farm9.staticflickr.com/8179/8066506348_f9003e9d5e.jpg" alt="google reader" width="500" height="203" border="0" /></a></p>
-<p> </p></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298/">破VPN引发的网络问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-26T00:00:00+08:00" pubdate data-updated="true">May 26<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/05/26/e7a0b4vpne5bc95e58f91e79a84e7bd91e7bb9ce997aee9a298/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><p>上个周末在家用VPN连上公司网络来写项目周报，公司的VPN系统会根据浏览器和操作系统来使用不同的VPN client. 很遗憾 mac下居然用的是一个applet，千辛万苦装上后能用了，中途出现CPU飙高的情况，我忍了，发完周报就把APPLET所在的网页关掉了，噩梦来了。</p>
-<p> </p>
-<p>上外网不能用了，ifconfig下出现两个VNIC的虚拟网卡且status为active。</p>
-<p><img title="Screen Shot 2012-05-26 at 10.47.14 AM.png" src="http://www.lovelin.info/wp-content/uploads/2012/05/Screen-Shot-2012-05-26-at-10.47.14-AM.png" alt="Screen Shot 2012 05 26 at 10 47 14 AM" width="557" height="312" border="0" /></p>
-<p>mtr 所有的外网域名都不通，只能ping 通自己的路由器192.168.1.1, 打印route table如下：</p>
-<p><img title="Screen Shot 2012-05-26 at 10.13.18 AM.png" src="http://www.lovelin.info/wp-content/uploads/2012/05/Screen-Shot-2012-05-26-at-10.13.18-AM.png" alt="Screen Shot 2012 05 26 at 10 13 18 AM" width="600" height="248" border="0" /></p>
-<p>按道理应该能ping通才对，换了个IPping了下，果然通了，断定为DNS解析的问题</p>
-<p>打开网络设置，果然看到了DNS server被换成了公司的几个内网IP，于是加上一条192.168.1.1并置顶，OK了</p>
-<p><img title="dns.jpg" src="http://www.lovelin.info/wp-content/uploads/2012/05/dns.jpg" alt="Dns" width="600" height="508" border="0" /></p>
-<p>顺便鄙视下arraynetworks的mac VPN client</p></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89/">那七年，我们一起（ ）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-20T00:00:00+08:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/05/20/e982a3e4b883e5b9b4efbc8ce68891e4bbace4b880e8b5b7efbc88efbc89/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><div style="font-size: 15px;">
-<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--></p>
-<div style="font-family: Arial;"><br />
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已是2012孟夏。每天路过钱塘江， 每每想起老用“迎着新世纪的曙光”做为立志结尾的身为祖国花朵的小学时垂鬓的我和现在终日奔波劳累已长为一朵奇葩的现在黄发的我，逝者如斯，白驹过隙。</p>
-</div>
-<div style="font-family: Arial;">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;05年，仲夏，6月2日，从那时起我不再是孤独一人，我很清楚地记得那是一个星期四的下午，连姜大的软件课我也没去听。很尴尬，title上的空格不知如何填充，我竟总结不出一个色彩或绚丽或灰暗的词来形容那七年，游扬州时那盆景上的“清风徐来，水波不兴”八个字莫名在脑袋里飘荡起来。一潭死水是否是我最真实的写照？</p>
-</div>
-<div style="font-family: Arial;">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;那位叠伞都要一丝不苟叠得整整齐齐，挤牙膏强制约束从后往前推的带有轻微强迫症状的女子，没能从我的生活中逃离，结了发，继续陪伴我IT技术男的苦难人生，并每天精打细算过日子。恍惚间想起东坡同学的“归而谋诸妇。妇曰:&#8217;我有斗酒，藏之久矣，以待子不时之需‘”，仿佛不知道什么时间，我说买房还缺50万，她就会拿出来一张50万的存折一样。只可惜我们活在2012的当下。东坡的那举那动是为与友泛舟游玩，书卷气骚人气扑面而来，而我们则撇不开阿堵物孔方兄铜臭气，撇不开生活的压力。我们不能武侠小说中一样，看到客栈只需大摇大摆走进去，吆喝一声“小二，5斤牛肉，再来5斤上好女儿红”，全然不用farm。每天清晨经过龙井，如果只需欣赏那一垄垄翠绿的茶叶及在其间追打嬉戏的狗，只需眺望烟雾缭绕的群山，只需注视头带斗笠用纤纤细手采茶的茶农，在清明前将今年的新茶寄往远方关心我的和我关心的亲朋，生活该是何等惬意？可惜这只是乌托邦。老婆老板老总们终究会把我从丰满的理想拉回骨感的现实，白菜房子汽油是不是又涨了?方案是不是完善了?再不加班项目是不是会延期了?</p>
-</div>
-<div style="font-family: Arial;">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;善于总结的网友们流行这样说， 很多男人都是这样的：开始时你会觉得他还不错，只是有点儿childish（孩子气）；相处久了，发现其实他那是selfish（自私鬼）；得再过几年才会明白，他根本就是rubbish（乐色男）。 感谢我的妻子，在察觉到了事实的真相后依然不离不弃，感谢她在这7年时光里时时提醒我不要沉迷在自己一个人的世界，感谢她不断校正我前进的方向，感谢她对我各种任性的包容。</p>
-</div>
-<div style="font-family: Arial;">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Years passed, kids came, good times, hard times , but never bad times.”jobs在结婚20周年的时候如是写到。现在正是到了艰难的时刻，繁忙的工作让我无法找到家庭与事业的平衡点。听老婆一遍遍计算我们每个星期能真正相处的时间，我知道我应该做点什么。人生不如意事十之八九，也希望老婆听听林清玄同学的那句“常想一二”，不认识jobs不认识林清玄没关系，我们都在阿里系，马云说“今天很残酷，明天更残酷，后天很美好”，远没有到糟糕的时候，远没有到看不到希望的时候不是吗？</p>
-</div>
-<div style="font-family: Arial;">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也许有一天，我们有能力也有心境抛开一切，或驾一辆够霸气的车，越过每一位匍匐前进的虔诚朝圣者，游历在通往羊卓雍措的路上，或在某个如画的景区开一间小旅馆，善待每一位光顾的客人，过着坚强安静不慌不忙的生活。</p>
-</div>
-<div style="font-family: Arial;">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我不会忘记某年某月某天某人系着围裙在厨房忙碌时说五一的时候会给我做绝味土豆吃，直到昨天它终于兑现了，很美味，谢谢。</p>
-</div>
-<div style="font-family: Arial;"><img title="wKgBtE-jiND3sBIYAAF-43jzon428.groupinfo.w600.jpeg" src="http://www.lovelin.info/wp-content/uploads/2012/05/wKgBtE-jiND3sBIYAAF-43jzon428.groupinfo.w600.jpeg" border="0" alt="WKgBtE jiND3sBIYAAF 43jzon428 groupinfo w600" width="600" height="387" /></div>
-</div></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
     
   </div>
+
+
+
+  <h1 class="headline">Categories</h1>
+
+  <section class="categories">
+    
+    <h2 class="category">
+      <a href="http://replace-this-with-your-hugo-site.com/categories/golang">Golang</a>
+      <small>(1)</small>
+    </h2>
+    
+    <h2 class="category">
+      <a href="http://replace-this-with-your-hugo-site.com/categories/linux">Linux</a>
+      <small>(3)</small>
+    </h2>
+    
+    <h2 class="category">
+      <a href="http://replace-this-with-your-hugo-site.com/categories/raspberry-pi">Raspberry-Pi</a>
+      <small>(1)</small>
+    </h2>
+    
+    <h2 class="category">
+      <a href="http://replace-this-with-your-hugo-site.com/categories/technology">Technology</a>
+      <small>(4)</small>
+    </h2>
+    
+  </section>
+
+
+
+
+
+</main>
+
+
+
 </div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/04/16/jiang-raspberry-pimu-lu-bei-fen-dao-dropbox/">将raspberry pi目录备份到dropbox</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/16/tmux-xia-wu-fa-zi-ding-yi-encodingde-jie-jue-fang-an/">tmux 下无法自定义encoding的解决方案</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/11/golangxie-ge-jian-dan-de-cmusge-ci-cha-jian/">golang写个简单的cmus歌词插件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/17/ci-qu-jing-nian/">此去经年</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/22/shellban-de-xia-mei-zi-tu/">shell版的下妹子图</a>
-      </li>
-    
-  </ul>
-</section>
-<section>
-  <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/golang'>golang (1)</a></li><li><a href='/blog/categories/linux'>linux (3)</a></li><li><a href='/blog/categories/other'>other (7)</a></li><li><a href='/blog/categories/raspberry-pi'>raspberry pi (1)</a></li><li><a href='/blog/categories/technology'>technology (20)</a></li><li><a href='/blog/categories/tips'>tips (13)</a></li></ul>
-</section>
-<iframe id="sina_widget_1800508994" style="width:100%; height:550px;" frameborder="0" scrolling="no" src="http://v.t.sina.com.cn/widget/widget_blog.php?uid=1800508994&height=550&skin=wd_01&showpic=1"></iframe>
 
-
-
-
-
-
-  
-</aside>
-
-    </div>
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2013 黑皮 - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - gaojian -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
 </footer>
-  
-
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'assassingj'; // required: replace example with your forum shortname
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function() {
- var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
- dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
- (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
- })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
 
 </body>
 </html>
+
